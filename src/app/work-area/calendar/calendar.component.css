@@ -1,0 +1,91 @@
+
+.checkcontainer input:checked ~ .radiobtn::after {
+    display: block;
+}
+
+.checkcontainer .radiobtn::after {
+    top: 3px;
+    left: 3px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffd902;
+}
+
+.radiobtn {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: 22px;
+    width: 22px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 .125rem .50rem rgba(0,0,0,0.2)!important; 
+    margin-right: 10px;
+}
+
+.radiobtn::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.h3-style{
+    margin: 30px 0px 20px 0px !important; 
+}
+
+.btn-style{
+    color: #000000;
+    background-color: #ffd902;
+    border-color: #ffd902;
+    font-size: 14px;
+    border-radius: 25px;
+    margin-top: 30px;
+    font-weight: bold; 
+
+}
+
+.btn-style:hover, .btn-style:active, .btn-style:focus{
+    color: #000000 !important;
+    background-color: #ffd902 !important;
+    border-color: #ffd902 !important;
+    font-size: 12px;
+    box-shadow: 0 0 0 0.2rem rgba(255, 217, 2, 0.5) !important;
+}
+
+
+
+/* --- Media Queries --- */
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-width: 320px) 
+and (max-width: 568px) {
+
+.checkcontainer input[type=radio] {
+        display: none;
+    }
+}
+.main-heading {
+    font-size: 1em;
+    text-align: center;
+}
+
+/* ----------- iPad 1, 2, Mini and Air ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-width: 768px) 
+and (max-width: 1024px) 
+/* and (-webkit-min-pixel-ratio: 1) */
+{
+    h4 {
+        font-size: 19px;
+    }
+    .checkcontainer {
+        font-size: 12px;
+    }
+}
+

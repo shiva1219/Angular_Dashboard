@@ -1,0 +1,26 @@
+<div class="row justify-content-md-center remove-bcolor">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <div class="text-center  text-md-right">
+      <label for="staticEmail">
+        <strong>No. of days</strong>
+        {{noOfDays}}
+      </label>
+    </div>
+  </div>
+  <div class=" col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+    <input type="number" class="form-control input-style" [(ngModel)]="noOfDays" name="noOfDays" (keypress)="numberOfDays($event)"
+      (keyup)="numberOfDays($event)" (keydown)="numberOfDays($event)">
+
+  </div>
+
+</div>
+<div class="remove-arrow mar-bot-20"></div>
+<div class="row">
+  <div class="offset-md-2 col-md-8">
+
+    <owl-date-time-inline class="date-center" [disabled]="validationFlag" [(ngModel)]="dateTimeRange" [selectMode]="'range'"
+      [pickerType]="'calendar'" #dt3 (click)="handleChange($event)"></owl-date-time-inline>
+    <div class="remove-arrow mar-bot-10"></div>
+
+  </div>
+</div>

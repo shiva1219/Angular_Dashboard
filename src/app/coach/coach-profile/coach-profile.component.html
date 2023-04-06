@@ -1,0 +1,95 @@
+<div class="koola-coachProfile container">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-headline d-none d-md-block ">
+        <h1>Let’s get you ready to coach.</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="serviceWrapper col-sm-12">
+      <div class="createOrg d-none d-md-block">Start with the basics</div>
+      <div class="wishTxt d-none d-md-block">We’ll ask you about your organisation, location and its details.</div>
+      <form #createOrg="ngForm" [formGroup]="createOrganisation" 
+      (ngSubmit)="submitOrgansation(createOrganisation)">
+
+        <div class="detailsWraper cProf-mob-v1" *ngIf="detailsFormState">
+          <div class="addOrg">Your organisation details</div>
+          <div class="row cProf-mob-v1">
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['orgName']" placeholder="ORGANISATION NAME" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['orgEmail']" placeholder="ORGANISATION EMAIL" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput type="url" [formControl]="createOrganisation.controls['orgWebsite']" placeholder="ORGANISATION WEBSITE" />
+            </mat-form-field>
+            <!-- <mat-form-field class="mat-inputField col-sm-3">
+              <input matInput [formControl]="createOrganisation.controls['branchName']" placeholder="BANK BRANCH" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-sm-3">
+              <input matInput type="number" [formControl]="createOrganisation.controls['bankAcc']" placeholder="BANK ACCOUNT NUMBER" />
+            </mat-form-field> -->
+          </div>
+        </div>
+        <!-- <koola-coach-profile-certifications (myEvent)="IsCoach($event)"></koola-coach-profile-certifications> -->
+        <div class="locationWrapper cProf-mob-v2" *ngIf="addressFormState">
+          <div class="addOrg">Tell us whare it is?</div>
+          <div class="row">
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['address1']" placeholder="ADDRESS1" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['address2']" placeholder="ADDRESS2" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['subUrb']" placeholder="SUBURB" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <input matInput [formControl]="createOrganisation.controls['country']" placeholder="COUNTRY" />
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <mat-select [formControl]="createOrganisation.controls['state']" placeholder="STATE" >
+              <mat-option *ngFor="let option of pincode" [value]="option.state_name">
+                  {{option.state_name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-inputField col-md-3">
+              <!-- <mat-select placeholder="POSTCODE" [formControl]="createOrganisation.controls['postCode']">
+                <mat-option *ngFor="let option of pincode" [value]="option.pincode">
+                  {{option.pincode}}
+                </mat-option>
+              </mat-select> -->
+              <input type="text" placeholder="POSTCODE"  matInput [formControl]="createOrganisation.controls['postCode']" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of pincode" [value]="option.pincode">
+                  {{ option.pincode }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div *ngIf="inputFieldStatus">
+          <span class="error">Please fill all mandatory fields.</span>
+        </div>
+        <div class="d-block d-md-none cProf-mobIndctr">
+          <ul>
+            <li [ngClass]="{'yellow': detailsFormState}" (click)="showDetailsForm()"></li>
+            <li [ngClass]="{'yellow': addressFormState}" (click)="showAddressForm()"></li>
+          </ul>
+          <img src="./assets/right-arrow.png" alt="" class="circulerNext" *ngIf="detailsFormState" (click)="showAddressForm()">
+        </div>
+       
+       
+        <div class="navigationWrapper" *ngIf="addressFormState">
+          <button id="createOrg"  class="btn nav-btn-submit" type="submit">Go ahead</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

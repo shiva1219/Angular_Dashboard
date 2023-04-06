@@ -1,0 +1,46 @@
+<div class="alert alert-danger" role="alert" *ngIf="everyValidationFlag">{{mainErrorMsg}}</div>
+
+<div class="row justify-content-md-center remove-bcolor">
+  <div class="col-sm-12 col-md-5">
+    <div class="form-group">
+      <input type="text" class="form-control input-style" (focus)="startDateEventHandler($event)" [(ngModel)]="startDate"
+        name="startDate" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" placeholder="Start Date">
+      <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" #dt></owl-date-time>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-2">
+    <p class="p-text-center">to</p>
+  </div>
+  <div class="col-sm-12 col-md-5">
+    <div class="form-group">
+      <input type="text" class="form-control input-style" [(ngModel)]="endDate" [disabled]="endDateFlag"
+        [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" (focus)="endDateEventHandler($event)" placeholder="End Date">
+      <owl-date-time [pickerType]="'calendar'" #dt2 [pickerMode]="'dialog'"></owl-date-time>
+    </div>
+  </div>
+</div>
+<div class="mar-top-bot-20">
+
+
+<div class="col-sm-12 col-md-12">
+  <div class="form-group">
+    <label class="checkcontainer">
+      <input class="form-check-input" type="checkbox" id="weekendholidays" value="1" (click)="onWeekdaysChange($event)"
+        [(ngModel)]="weeksDays"> {{weeksDaysCount}}
+      <span class="checkmark change-top-left"></span>
+    </label>
+  </div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+  <div class="form-group">
+    <label class="checkcontainer">
+      <input class="form-check-input" type="checkbox" id="publicholidays" value="2" (click)="onGovHolidaysChange($event)"
+        [(ngModel)]="govHolyDays"> {{govtHolidaysCount}}
+      <span class="checkmark change-top-left"></span>
+    </label>
+  </div>
+</div>
+
+</div>

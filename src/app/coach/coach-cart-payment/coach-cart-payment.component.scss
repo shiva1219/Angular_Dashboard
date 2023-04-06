@@ -1,0 +1,406 @@
+.cart-container {
+    margin: 0 0 3rem 3rem;  
+}
+.cart-strategy-content {
+    position: relative;
+    margin: 2rem 11rem 3rem 6rem;
+    box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+    .cart-crossbtn-bg{
+        height: 50px;
+        width: 50px;
+        background-color: #db5454;
+        position: absolute;
+        top: -20px;
+        left: -24px;
+        border-radius: 50%;
+        -webkit-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+        box-shadow: 0 0 16px -2px rgba(0,0,0,0.2); 
+        z-index: 99;
+        opacity: 1;
+    }
+    .cart-close-btn {
+        position: absolute;
+        top: -29px;
+        left: -13px;
+        z-index: 100;
+        cursor: pointer;
+        font-size: 44px;
+        color: #fff;
+        font-weight: 100;
+    }
+.cart-strategy-img {
+    padding: 0.75em;
+}
+    .cart-strategy-img img {
+        border-radius: 17px;
+        max-width: 82%;
+        height: 147px;
+    }
+.cart-sports-schedule {
+    margin-top: 11px;
+}
+.cart-strategy-timings h2 {
+    font-weight: 700;
+    font-family: "Helvetica Neue",sans-serif;
+    color: var(--txt-color);
+    margin-bottom: 0;
+    font-size: 2vw;
+}
+.cart-strategy-timings p {
+    font-size: 1.5vw;
+    font-weight: 600;
+    margin: 0.2em 0;
+    color: #131313;
+}
+.cart-strategy-timings small {
+    color: #7f7f7f;
+}
+.cart-strategy-location {
+    padding: 0.4em 1em 0 0.3em;
+}
+    .cart-strategy-location img  {
+        width: 45px;
+        height: 39px;
+    }
+    .cart-strategy-location p {
+        color: #a8a8a8;
+        font-size: 1.05vw;
+    }
+mat-form-field ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0.9em;
+
+}
+/* .cdk-overlay-container .cdk-overlay-pane .addon-participants {   
+    padding-bottom: 0.9em;
+    } */
+    ::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+        border: none;
+    }
+.cart-person-addon h6 {
+    font-size: 0.9vw;
+}    
+.cart-addon-images img {
+    max-width: 17%;
+    border-radius: 50%;
+    margin-right: 0.3em;
+    /* max-width: 36px; */
+}
+/*------------------------------------*\
+   #participants 
+\*------------------------------------*/
+.cart-participants-wrapper img {
+    border-radius: 50%;
+    max-width: 45%;
+    margin-right: 6px;
+}
+/*------------------------------------*\
+   #EndOfParticipants 
+\*------------------------------------*/
+.cart-value {
+    background-color: #ffce00;
+    color: #fff;
+    padding: 1.5em;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+    .cart-value p {
+        font-size: 4em;
+        font-weight: 700;
+    }
+    .cart-value small {
+        font-size: 120%;
+        font-weight: 600;
+    }
+    
+/*------------------------------------*\
+   #deals 
+\*------------------------------------*/
+.deals-container-content {
+    margin: auto;
+    padding: 2% 5%;
+    line-height: 1.6;
+    color: #7d7d7d;
+}
+    .deals-container-content a {
+        color: #555555;
+        font-size: 1.1em;
+        font-weight: 700;   
+    }
+.deals {
+    border-radius: 20px;
+    box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    flex-basis: 29%;
+    height: auto;
+}
+    .deals .deal-content .deal-selectbox {
+        margin: 16px 0px 16px 2px;
+    }
+    .deals .deal-img img { 
+        max-width: 75%;
+        height: 60px;
+        width: 80px;
+        border-radius: 15px;
+        padding: 3px;
+    }
+    .deals .deal-content:last-child h4 {
+        font-size: 1.2em;
+    }
+    .deals .deal-content small {
+        color: #c6c6c6;
+    }
+/* .most-availed {
+    display: contents;
+}     */
+    .most-availed-deal {
+        background-color: #ffce00;
+        border-radius: 20px;
+        box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    }
+    .most-availed-deal-selectbox {
+        margin: 31px 0px 31px 6px;
+    }
+    .most-availed-deal-img img { 
+        max-width: 80%;
+        height: 81px;
+        border-radius: 15px;
+        padding: 3px;
+    }
+    .most-availed-deal h4 {
+        color: #fff;
+        font-size: 1.2em;
+    }  
+    .most-availed-deal small {
+        color: #645c37;
+    }
+    
+    .most-availed::after {
+    content: 'Most availed';
+    color: #afafaf;
+}      
+/*------------------------------------*\
+   #EndOfdeals 
+\*------------------------------------*/
+.cart-btns-wrapper p span {
+    font-size: 1.5em;
+}    
+.cart-back-btn {
+    background-color: #fff;
+    font-size: 0.7em!important;
+    border: 1px solid #afafaf;
+    width: 80px;
+    color: var(--txt-color);
+    border-radius: 30px!important;
+} 
+.cart-submit-btn {
+    background-color: #ffce00;
+    margin: 0 0px 10px 10px;
+}
+.cart-buynow-btn {
+    margin: 0 0px 4px 10px;
+    background-color: #ffce00;
+    font-size: 0.9em;
+}
+.cart-checkout-pay-btn,.cart-next-btn,
+.cart-submit-btn,
+.cart-buynow-btn {
+    margin-right: 0!important;
+    border-radius: 30px!important;
+    width: 140px!important;
+}
+
+/* row 2 Billing & Payment*/
+.cart-save-btn,.cart-pay-btn{
+    background-color: #fff;
+    border: 1px solid #bbbdbe!important;
+    border-radius: 30px!important;
+    height: 40px;
+    margin-top: 11px;
+}
+
+.form-row>.col, .form-row>[class*=col-] {
+    padding-right: 36px;
+    padding-left: 7px;
+}
+input,select {
+   /*  border-bottom: 1px solid black!important; */
+    box-shadow: none!important;
+    border-radius: 0;
+    border-top:none!important;
+    border-right:none!important;
+    border-left:none!important;
+}
+.cart-save-btn {
+        font-size: 0.8em!important;
+        padding: 4px!important;
+        letter-spacing: 1px;
+        float: right;
+        width: 159px;
+        color:#878787;
+}
+.nav {
+    padding-left: 17px;
+}
+.nav-item a {
+    color: #828282!important;
+    font-size: 12px;
+    padding-top: 14px;
+}
+.active-tab-btn {
+    background-color: #fff!important;
+    -webkit-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    color: #828282!important;
+    border-radius: 30px;
+    height: 45px;
+    width: 130px;
+    font-size: 12px;
+    padding: 14px 34px;
+}
+.tab-content-active-link {
+    background-color: #fff!important;
+}
+label {
+    color: #828282;
+}
+.cart-cvv img {
+    width: 21px;
+    height: 21px;
+}
+.cart-pay-btn,.cart-checkout-pay-btn,.cart-next-btn {
+    float: right;
+    background-color: #ffce00;
+    font-size: 1em!important;
+    border: none!important;
+    width: 168px;
+    margin-right: 42px;
+    color: var(--txt-color);
+}
+
+.mat-width{
+    width: 100%;
+    color: var(--txt-color);
+}
+.width-83 {
+    width: 83%;
+}
+.form-group{
+    margin-bottom: 0rem !important;
+}
+
+   /* --- Media Queries --- */
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media screen 
+and (min-width: 320px) 
+and (max-width: 568px) {
+/* and (device-aspect-ratio: 40/71) */
+ 
+     /* and (-webkit-min-device-pixel-ratio: 2)  */
+     .pl-25 {
+        padding-left: 0em!important;
+    }
+    /* h3 {
+       
+    } */
+    .pl-25 h3 {
+        font-size: 1.3em;
+        padding-bottom: 0.6em;
+        padding-left: 0.8em;
+    }
+    .cart-strategy-content {
+        position: relative;
+        margin-left: 1em;
+        margin-bottom: 3em;
+        -webkit-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+        box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+    .cart-strategy-content {
+        position: relative;
+        
+    }
+    .cart-crossbtn-bg {
+        height: 23px;
+        width: 23px;
+        top: -6px;
+        left: -10px;
+    }
+    .cart-close-btn {
+        position: absolute;
+        top: -14px;
+        left: -7px;
+        z-index: 100;
+        cursor: pointer;
+        font-size: 26px;
+        color: #fff;
+        font-weight: 100;
+        opacity: 0.6;
+    }
+     .cart-strategy-img {
+        padding: 0.5em 0em 0.5em 0.5em !important;
+        /* max-width: 10.666667%!important; */
+    }
+    .cart-strategy-img img {
+        border-radius: 8px;
+        max-width: 40px;
+        height: 57px;
+    }
+    .cart-sports-schedule {
+        margin: 0.6em 0;
+        padding-left: 25px;
+    }
+    .cart-sports-schedule h2 {
+        font-size: 0.8em;
+        margin-bottom: 0.2em;
+    }
+    .cart-timings {
+        font-size: 0.6em;
+        margin-bottom: 1px;
+    }
+    .cart-strategy-location {
+        line-height: 0.5;
+    }
+    .cart-strategy-location i {
+        font-size: 1.1em;
+    }
+    .cart-strategy-location p {
+        /* display: inline; */
+        font-size: 0.56em;
+    }
+    .cart-value {
+        max-width: 59px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .cart-value p {
+        font-size: 1em;
+        font-weight: 700;
+        padding: 0 0px;
+        margin: 11px 7px 2px -3px;
+    }
+    .save-address {
+        text-align: center;
+    }
+    .cart-next-btn {
+        float: none;
+    }
+        .cart-save-btn {
+            float: none;
+            margin: 0 auto;
+            width: 138px;
+            font-size: 0.7em!important;
+        }
+    .cart-pay-btn {
+        margin-right: 0;
+        margin-top: 0;
+        float: none;
+    }    
+
+    }

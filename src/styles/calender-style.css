@@ -1,0 +1,391 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+.remove-arrow .owl-dt-control-arrow-button .owl-dt-control-button-content{
+    display: none !important;
+}
+.owl-dt-control-button-content{
+    margin: 15px auto;
+    padding: 20px!important;
+
+}
+.col-form-label{
+    padding-right: 0px !important;
+}
+.pad-left{
+    padding-left: 0px !important;
+}
+/* .mothly-input{
+    border-radius: 25px !important;
+    box-shadow: 0 .125rem .50rem rgba(0,0,0,0.2)!important; 
+} */
+
+.input-style{
+    border-radius: 25px !important;
+    /* box-shadow: 0 .125rem .50rem #ffd902!important;  */
+}
+
+.remove-bcolor .form-control{
+    border: 1px solid #ffd902 !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+}
+
+.mar-bot-10{
+    margin-bottom: 10px;
+    padding-right: 0!important;
+}
+
+.mar-bot-20{
+    margin-bottom: 20px;
+}
+
+.mar-bot-40{
+    margin-bottom: 60px;
+}
+.mar-top-bot-20{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.p-text-center{
+    text-align: center;
+    margin-top: 7px;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-selected{
+    background-color: #ffd902 !important;
+}
+
+.owl-dt-inline-container{
+    width: 100%;
+
+}
+
+.owl-dt-inline-container .owl-dt-calendar, .owl-dt-popup-container .owl-dt-calendar{
+    height: auto !important;
+
+}
+
+.owl-dt-inline-container, .owl-dt-popup-container {
+    -webkit-box-shadow: none !important;
+    box-shadow:none !important;
+}
+
+input[type=checkbox], input[type=radio]{
+    margin-right: 10px;
+}
+
+.checkcontainer input:checked ~ .checkmark {
+    background-color: #ffffff;
+}
+
+.checkcontainer input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.checkcontainer .checkmark::after {
+    left: 7px;
+    top: 3px;
+    width: 7px;
+    height: 12px;
+    border: solid #ffd902;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 .125rem .50rem rgba(0,0,0,0.2)!important; 
+}
+
+.change-top-left{
+    top: 2px !important;
+    left: -12px !important;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cylindrical{
+    padding: 20px 10px;
+    border: 1px solid #ffd902;
+    /*  background: #ffd902; */
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /* width: 70px; */
+    /* height: 140px; */
+    margin-bottom: 10px
+}
+.cylindrical .inp-month {
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    padding: 0px !important;
+    text-align: center;
+    font-weight: bold;
+    /* background: #ffd902; */
+    margin-top: -5px;
+}
+.cylindrical .inp-month:active {
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    padding: 0px !important;
+    text-align: center;
+    font-weight: bold;
+    /* background: #ffd902; */
+}
+.cylindrical .lbl-month {
+    border-top: 2px solid #333;
+    /* border-bottom: 2px solid #333; */
+    text-align: center;
+    display: inherit;
+    color: #333;
+    padding-top: 3px;
+    font-weight: 600;
+    line-height: 2;
+}
+.cylindrical .form-group{
+    margin-bottom: 0px !important;
+}
+
+
+/* Custom styles by naveen 19-10-2018 */
+
+.main-heading{
+    margin: 10px 0 30px 0px;
+}
+
+.time-picker > table {
+    width: 100%!important;
+
+}
+
+.time-picker  table tbody tr td {
+    text-align: center;
+}
+.time-picker  table tbody tr td input{
+    text-align: center;
+}
+.bs-timepicker-field {
+    width:100%!important;
+}
+
+.btm-year{
+    font-size:18px;
+    font-weight: bold;
+}
+
+.ngb-date-picker-bi-weekly{
+    /* width: 100%; */
+    border:none!important;
+}
+.bg-light{
+    background-color: white!important;
+}
+.ngb-dp-day {
+    width: 4rem!important;
+    height: 4rem!important;
+}
+.ngb-dp-weekday{
+    width: 3.8rem!important;
+    height: 3rem!important;
+    color: rgba(0,0,0,.4)!important;
+}
+.ngb-dp-weekdays{
+    margin-bottom: 15px!important;
+}
+.custom-day{
+    padding: 0.8rem 0.25rem;
+    height: 3rem;
+    width: 3rem;
+}
+
+.custom-day.range, .custom-day:hover{
+
+    background-color: #ffd902 !important;
+    border-radius: 50%;
+    width: 100%; 
+    height: 100%;
+}
+
+.custom-day.selected{
+    background-color: #ffd902 !important;
+    border-radius: 50%;
+    color:#ffffff;
+}
+
+
+.ngb-date-pkr-weekly{
+ border:none!important;
+}
+
+[_nghost-c24] > select[_ngcontent-c24], [_nghost-c24] > select[_ngcontent-c24]{
+    width: 48%!important;
+    margin:1%;
+}
+
+.ngb-dp-header[_ngcontent-c20]{
+    margin-bottom: 10px;
+}
+
+
+
+@media screen and (min-width: 320px) and (min-width: 768px)  {
+    .main-heading {
+        margin: 30px 0px;
+        font-size: 1rem;
+    }
+
+    .owl-dt-dialog-container{
+        min-height: 64vh!important;
+        margin: 0;
+    }
+
+    .ngb-date-picker-bi-weekly{
+        /* width: 100%; */
+        border:none!important;
+    }
+    .bg-light{
+        background-color: white!important;
+    }
+    .ngb-dp-day {
+        width: 2rem!important;
+        height: 2rem!important;
+    }
+    .ngb-dp-weekday{
+        width: 2rem!important;
+        height: 2rem!important;
+    }
+    .ngb-dp-weekdays{
+        margin-bottom: 15px!important;
+    }
+    .owl-dt-dialog-container >.owl-dt-container-inner>.owl-dt-calendar{
+        width: 25vw!important;
+    }
+    
+   
+ }
+
+
+
+@media (min-width: 375px) {
+    .owl-dt-dialog-container{
+        min-height: 62vh;
+    }
+    .ngb-date-picker-bi-weekly{
+        /* width: 100%; */
+        border:none!important;
+    }
+    .bg-light{
+        background-color: white!important;
+    }
+    .ngb-dp-day {
+        width: 3rem!important;
+        height: 3rem!important;
+    }
+    .ngb-dp-weekday{
+        width: 2.8rem!important;
+        height: 3rem!important;
+    }
+    .ngb-dp-weekdays{
+        margin-bottom: 15px!important;
+    }
+
+ }
+
+
+
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {  
+    .owl-dt-dialog-container{
+        min-height: 65vh;
+    }
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media only screen 
+and (min-width: 768px) 
+and (max-width: 1024px) 
+/* and (-webkit-min-pixel-ratio: 1) */
+{  
+    .owl-dt-dialog-container{
+        min-height: 68vh;
+    }
+    .media-margin-left-0{
+        margin-left: 0 !important;
+    }
+    .ngb-date-picker-bi-weekly{
+        /* width: 100%; */
+        border:none!important;
+    }
+    .bg-light{
+        background-color: white!important;
+    }
+    .ngb-dp-day {
+        width: 2.4rem!important;
+        height: 2.4rem!important;
+    }
+    .ngb-dp-weekday{
+        width: 2.4rem!important;
+        height: 2.4rem!important;
+    }
+    .ngb-dp-weekdays{
+        margin-bottom: 15px!important;
+    }
+
+    .owl-dt-calendar{
+        width: 40vh!important;
+    }
+    
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .owl-dt-dialog-container{
+        min-height: 80vh;
+    }
+
+    .ngb-date-picker-bi-weekly{
+        /* width: 100%; */
+        border:none!important;
+    }
+    .bg-light{
+        background-color: white!important;
+    }
+    .ngb-dp-day {
+        width: 3.3rem!important;
+        height: 3.3rem!important;
+    }
+    .ngb-dp-weekday{
+        width: 3.2rem!important;
+        height: 3rem!important;
+    }
+    .ngb-dp-weekdays{
+        margin-bottom: 15px!important;
+    }
+    
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .owl-dt-dialog-container{
+        min-height: 70vh;
+          height: 66vh;
+    }
+}

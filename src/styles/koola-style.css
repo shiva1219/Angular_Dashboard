@@ -1,0 +1,278 @@
+ 
+/* Global Properties */
+a:hover {
+    text-decoration: none!important;
+}
+.selectBox-color {
+    font-size: 1rem!important;
+    color: #d9d9d9!important;
+}
+option:not(:first-of-type) {
+    color: black;
+}
+.selectWrapper {
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    border-radius: 40px;
+    display: inline-block;
+    overflow: hidden;
+   /* background: #cccccc;
+    border: 1px solid #cccccc;
+    */
+    width: 100%;
+}
+.selectBox {
+    width: 100%;
+    height: calc(4rem + 2px)!important;
+    border: none!important;
+    outline: none;
+   /* padding: 2rem .75rem!important;
+    */
+}
+.nav-searchbox {
+    border-right-style: none!important;
+    border-top-left-radius: 1.25rem!important;
+    border-bottom-left-radius: 1.25rem!important;
+    width: 500px;
+}
+.input-group-addon i {
+    border-top-style: solid;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-width: 1px 0 1px 0;
+    border-color: #d2d8dd #fff ;
+    padding: 0.6rem;
+}
+.search-btn-padding {
+    padding: 5px 10px 7px 10px;
+    border-top-style: solid;
+    border-right-style: solid!important;
+    border-bottom-style: solid;
+    border-left-style: none;
+    border-width: 1px 1px 1px 0;
+    border-color: #d2d8dd!important;
+    margin-left: -0.3rem;
+}
+.search-btn {
+    padding: .1rem 1.5rem!important;
+    border-radius: 1.2rem!important;
+    background-color: #ffce00!important;
+}
+.yellow-text {
+    color: #ffdb48!important;
+}
+.coach-assistCoach {
+    outline: none;
+    border: none!important;
+    color: #ffdc63!important;
+}
+.mb-32 {
+    margin-bottom: 2rem;
+    margin-top: 0.8rem;
+}
+.session-title {
+    padding-bottom: 8px!important;
+   /* border-bottom: 2px solid black!important;
+    */
+    border: 0!important;
+    outline: 0!important;
+    background: transparent;
+    border-bottom: 1px solid #dddedf!important;
+    border-radius: 0!important;
+    box-shadow: none!important;
+}
+textarea:focus {
+    -webkit-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2)!important;
+    box-shadow: 0 0 16px -2px rgba(0,0,0,0.2)!important;
+    outline: 0 none!important;
+    border-color: #dde1e5!important;
+}
+.add-coach-btn,.cart-save-btn,.cart-pay-btn {
+    background-color: #fff;
+    border: 1px solid #bbbdbe!important;
+    border-radius: 30px!important;
+    padding: 6px;
+    height: 40px;
+    width: 189px;
+    font-size: 0.5em!important;
+    letter-spacing: 1.5px;
+}
+.crossed {
+    width: 100%;
+    height: 85px;
+    border: 1px solid black;
+}
+.ticket-cost,.thumbnail-search {
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    border-radius: 2.5rem!important;
+    display: inline-block;
+    overflow: hidden;
+   /* background: #cccccc;
+    */
+    border: 1px solid #cccccc;
+    width: 100%;
+    height: calc(3.25rem + 2px)!important;
+    margin-bottom: 0px!important;
+    box-sizing: border-box;
+    padding: 2rem!important;
+}
+.br-1 {
+    border-radius: 1rem!important;
+    resize: none;
+}
+.draft-btn,.preview-btn,.publish-btn,.edit-btn {
+    font-size: 1.25rem!important;
+    line-height: 1.5!important;
+    border-radius: 3.3rem!important;
+    margin: 1rem 0.4rem;
+    color: #616161!important;
+    background-color: #fff!important;
+    border-color: #a1a3a5!important;
+}
+.draft-btn {
+    padding: 0.8rem 3rem!important;
+}
+.preview-btn,.publish-btn {
+    padding: 0.8rem 4rem!important;
+}
+.edit-btn {
+    padding: 0.8rem 2.5rem!important;
+    color: #5c5539;
+}
+.active {
+    background-color: #ffce00!important;
+    border: none!important;
+}
+.page-link-styling {
+    border: none!important;
+    color: #bbbbbb!important;
+}
+.page-link-styling li a:hover{
+    background-color: #fff!important;
+}
+.footer-copyrights {
+    margin: 1.6rem 0 1.6rem 0.5rem;
+    color: #cecece;
+    font-size: 0.8rem;
+}
+.footer-links{
+    padding-right: .5rem!important;
+    padding-left: .5rem!important;
+    margin: 0.7rem!important;
+    color: #292929!important;
+    font-size: 0.9rem!important;
+}
+.mat-width{
+    width: 100%;
+}
+
+.user-rounded-img img {
+    width: 80px;
+    height: 80px;
+}
+
+/* profile Circle */
+.rounded-img-wrapper {
+    border: 4px solid #FFCE00;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    /* margin: auto; */
+    padding-top: 22px;
+    float:right;
+    
+  }
+  .rounded-img-wrapper p{
+    font-size: 20px;
+    font-weight: 600
+  }
+
+ /* =============== Media Queries ===============  */
+
+/* =============== iPhone 5, 5S, 5C and 5SE =============== */
+
+/* Portrait and Landscape */
+@media only screen 
+and (min-width: 320px) 
+and (max-width: 568px) {
+/* and (-webkit-min-device-pixel-ratio: 2)  */
+ 
+  body {
+      margin: auto!important;
+  }
+  /* .session-creation-h-paras {
+    font-size: 0.9em;
+    } */
+    .selectBox,.ticket-cost,.thumbnail-search {
+        height: calc(2.5rem + 2px)!important;
+    }
+    .ticket-cost,.thumbnail-search {
+        padding: 18px!important;
+    }
+    /* .draft-btn, .preview-btn, .publish-btn, .edit-btn {
+        font-size: 1rem!important;
+        margin: 1rem 0.4rem;       
+    } */
+    #footer {
+        height: 110px;
+    }
+        .footer-copyrights {
+            margin: 0 0 25px 0!important;
+        }
+        .footer-nav {
+            padding-left: 25px!important;
+    }
+        #footer .footer-nav ul {
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+    }
+        #footer .footer-links {
+            padding-right: 0.1rem!important;
+            margin: 0em!important;
+            font-size: 0.7em!important;
+        }
+        #footer .row .footer-pl {
+            order: 2;
+            margin: auto;
+            text-align: center;
+        }
+        .footer-nav {
+            padding-right: 15px;
+        }
+}
+
+/* ============== iPad 1, 2, Mini and Air ============== */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
+  /* and (-webkit-min-pixel-ratio: 1)  */
+
+  {
+    body {
+        overflow-x: hidden;
+        margin: auto!important;
+    }
+    #footer {
+        height: 100px;
+    }
+    .footer-copyrights {
+        font-size: 0.9rem;
+    }
+    #footer .footer-pl {
+        padding-left: 28px;
+    }
+    .footer-links {
+        margin: 0.2rem!important;
+    }
+    .footer-nav ul {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,137 @@
+<section>
+  <div class="container-fluid container-margin">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 pr-40">
+        <div class="basic-strategy mr-3 mr-md-0" id="basicStrategy">
+          <div class="d-inline">
+            <div class="col-8 col-sm-8 strategy">
+              <h3>{{baseOffering}}</h3>
+              <p class="session-details-para-font training">{{opportunityInstanceDetail.opportunity_instance}}</p>
+            </div>
+            <div *ngIf="isPublish; then showValue else hideVlaue"></div>
+            <ng-template #showValue>
+              <div class="edit col-2 col-sm-3">
+                <button class="btn btn-lg btn-light edit-btn" id="edit" (click)="updateDetailsPage($event)">EDIT</button>
+              </div>
+            </ng-template>
+            <ng-template #hideVlaue>
+              <div class="session-timings col-4 col-sm-4 px-0">
+                <div class="session-timings-content">
+                  <h4>{{opportunityInstanceDetail.session_start_date}}</h4>
+                  <hr>
+                  <p>{{opportunityInstanceDetail.session_start_time_zone}}-{{
+                    opportunityInstanceDetail.session_completion_time_zone}}</p>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          <div class="clearfix"></div>
+          <hr class="mr-b">
+        </div>
+
+        <div class="session-details-para-font">
+          <div class="d-flex">
+            <div class="coach-exp">
+              <p>Sports experience Coaching by <a href="" src=""><span class="yellow-text">{{opportunityInstanceDetail.service_provider
+                    | lowercase}}</span></a></p>
+            </div>
+            <div class="sport-organised">
+              <p>Organised by <a href=""><span class="yellow-text">{{opportunityInstanceDetail.cname}}</span></a></p>
+            </div>
+            <!-- <div class="user-rounded-img">
+              <div class="rounded-img-wrapper">
+                <p>{{profileName}}</p>
+              </div>
+            </div> -->
+            <div class="user-rounded-img">
+              <img class="rounded-circle" src="../../../assets/profile.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="crossed-icons" id="" *ngFor="let ame of amenity">
+            <img src="{{baseUrl}}/assets/{{ame.image}}">
+          </div>
+          <div class="clearfix"></div>
+          <hr class="mb-32">
+        </div>
+        <div class="about-coach">
+          <h4>About your coach, {{cName}}</h4>
+          <p class="session-details-paras">{{opportunityInstanceDetail["sp_narrative"]}}
+            <a href=""><span class="yellow-text">Know more.</span></a></p>
+          <hr>
+        </div>
+        <div class="">
+          <h4>What we'll do</h4>
+          <p class="session-details-paras">{{opportunityInstanceDetail["description"]}} <a href=""><span class="yellow-text">+More.</span></a></p>
+          <hr>
+        </div>
+        <div class="notes">
+          <h4>Notes</h4>
+          <p class="session-details-paras">{{opportunityInstanceDetail["special_note"]}}</p>
+          <hr>
+        </div>
+        <div class="group-size">
+          <h4>Group Size</h4>
+          <p class="session-details-paras">There are {{opportunityInstanceDetail["available_slots"]}} spots available
+            on this coaching. You don't have to fill all of
+            them.
+            Experiences are meant to be social, so other friends could join too.
+          </p>
+          <hr>
+        </div>
+        <div class="cancellation-policy">
+          <h4>Flexible cancellation policy</h4>
+          <p class="session-details-paras">Any class can be cancelled and fully refunded within 24 hours of purchase.
+            <a href=""><span class="cancel-policy yellow-text">See Cancellation policy.</span></a>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 pl-40">
+        <div class="person-ticket-cost">
+          <h3 class="d-inline-block mr-5">${{opportunityInstanceDetail["price"]}} per person /
+            {{opportunityInstanceDetail["available_slots"]}} Tickets</h3>
+          <p class="save-to-favorite">Save to favourite<span class="fa fa-star-o fa-star" data-rating="1"></span></p>
+        </div>
+        <div class="game-location">
+          <h4 class="mb-0">Where we'll be</h4>
+          <p class="session-details-paras mb-0 pb-0">We have different pitches in the city but most probably we'll be playing on:</p>
+          <p class="session-details-paras">{{venueAddress}}</p>
+          <div class="session-location-map" id="location-map">
+            <app-googlemaps></app-googlemaps>
+          </div>
+        </div>
+        <div class="custom-breadcrumb-list col-sm-12 row">
+          <ul class="custom-breadcrumb col-sm-10">
+            <li>{{opportunityInstanceDetail.surface_quality[0].surface_quality}}</li>
+            <li *ngFor="let age of targetAgeGroup">{{age.target_age_group}}</li>
+            <li *ngFor="let gen of selectedGender">{{gen}}</li>
+            <li>{{opportunityInstanceDetail.consumer_expert[0].consumer_expertise}}</li>
+          </ul>
+          <div *ngIf="isRegister; then registerShow"></div>
+          <ng-template #registerShow>
+            <button type="button" class=" btn btn-light btn-lg register-btn" id="" (click)="showCartPage($event)">REGISTER</button>
+          </ng-template>
+        </div>
+
+        <div class="session-happening">
+          <div *ngIf="isPublish; then calendarShow"></div>
+          <ng-template #calendarShow>
+            <app-calendar [calendarData]="calendarObj"></app-calendar>
+          </ng-template>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of 2 column section -->
+  <div *ngIf="isPublish; then buttonsShow"></div>
+  <ng-template #buttonsShow>
+    <div class="row text-center">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <button type="button" class="btn btn-light btn-lg draft-btn" id="save-to-draft" (click)="sessionInstanceCreate(1)">SAVE
+          TO DRAFT</button>
+        <button type="button" class="btn btn-light btn-lg publish-btn active" id="publish" (click)="sessionInstanceCreate(1)">PUBLISH</button>
+      </div>
+    </div>
+  </ng-template>
+</section>

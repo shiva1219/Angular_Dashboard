@@ -1,0 +1,440 @@
+<div class="container-fluid media-container">
+  <form novalidate>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pr-40">
+        <div>
+          <div class="mar-top-bot-1 sport-offerings">
+            <p class="session-creation-h-paras">Pick a sport from your offerings</p>
+            <!-- {{selectedOfferingId|json}} -->
+            <div class="form-group selectWrapper">
+              <select placeholder="Search and press enter" [formControl]="offering" [(ngModel)]="selectedOfferingId"
+                (ngModelChange)="changeBaseOffering($event)" class="form-control selectBox selectBox-color">
+                <option *ngFor="let offerings of offering_details" [ngValue]="offerings">{{offerings["base_offering"]}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- [value]="offerings.base_offering_id" -->
+          <div class="mar-top-bot-1">
+            <div class="form-group">
+              <p class="session-creation-h-paras">Give an awesome title to your session..</p>
+
+              <mat-form-field class="mat-width r-shadow">
+                <input matInput placeholder="Title goes here..." [formControl]="name" required name="title" [(ngModel)]="title"
+                  (ngModelChange)="titleChange($event)">
+              </mat-form-field>
+
+              <div *ngIf="(name.invalid && (name.dirty || name.touched)) || !titleFlag " class="alert alert-danger">
+
+                <div *ngIf="name.errors.required ">
+                  Name is required.
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="container mar-top-bot-1 coach-details">
+            <div class="row">
+              <div class="d-flex">
+                <div class="coach-name">
+                  <p class="session-creation-h-paras">Sports experience Coaching by::<label>{{this.opportunityInstanceDetail.cname}}</label>
+                  </p>
+                </div>
+
+                <div class="organisation">
+                  <p class="session-creation-h-paras">Organised by:: <label>{{this.opportunityInstanceDetail.service_provider
+                      | lowercase}}</label><a href=""><span class="yellow-text"> <br> Add an organisation +</span></a>
+                  </p>
+                </div>
+
+                <div class="user-rounded-img">
+                  <div class="rounded-img-wrapper">
+                    <p>{{profileName}}</p>
+                  </div>
+                </div>
+                <!-- <div class="user-rounded-img">
+                  <img class="rounded-circle" src="../../../assets/profile.jpg" alt="">
+                </div> -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 assistCoach">
+                <p class="session-creation-h-paras">Assistant Coaching by:: <label>{{this.opportunityInstanceDetail.cname}}</label></p>
+              </div>
+              <button type="" class="btn add-coach-btn">+ ADD MORE COACH</button>
+            </div>
+          </div>
+          <!-- Coach Details section for mobile version  -->
+          <section id="coach-details-wrapper">
+            <!-- <div class="container"> -->
+            <div class="row">
+              <div class="coach-experience-img">
+                <div class="exp-title col-10">
+                  <p>Sports experience Coaching by {{this.opportunityInstanceDetail.cname}}</p>
+                  <!-- <mat-form-field>
+                      <mat-select>
+                        <mat-option>{{cName}}</mat-option>
+                      </mat-select>
+                    </mat-form-field> -->
+                </div>
+                <div class="coach-img col-2">
+                  <img class="rounded-circle" src="../../../assets/profile.jpg" alt="">
+                </div>
+              </div>
+              <div class="assistant-coaching">
+                <div class="assist-coach-by">
+                  <p>Assistant Coaching by {{this.opportunityInstanceDetail.cname}}</p>
+                  <!-- <mat-form-field>
+                      <mat-select>
+                        <mat-option></mat-option>
+                      </mat-select>
+                    </mat-form-field> -->
+                </div>
+                <div class="add-coach">
+                  <div class="add-coach-content">
+                    <small>Add more coaches to the session who would assist the coach</small>
+                  </div>
+                  <div class="add-more-coach-btn">
+                    <button type="" class="btn add-coach-btn">+ ADD MORE COACH</button>
+                  </div>
+                </div>
+              </div>
+              <div class="organisations-list">
+                <p>Organised By {{this.opportunityInstanceDetail.service_provider}}</p>
+                <!-- <mat-form-field>
+                    <mat-select>
+                      <mat-option></mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+              </div>
+            </div>
+            <!-- </div> -->
+          </section>
+          <!-- End of Coach Details section for mobile version  -->
+          <div class="gender d-flex mar-t-b">
+            <div class="col-4 col-lg-4  col-xl-4">
+              <p class="session-creation-h-paras">Gender</p>
+              <small>specify gender for this group</small>
+            </div>
+            <div class="d-flex col-4 col-lg-4  col-xl-4 genderWrapper justify-content-md-start justify-content-xl-center">
+              <label *ngFor="let data of gernderArr">
+                <input type="checkbox" (change)="onGenderChange(data.gen, $event.target.checked)" [checked]="selectedGender.includes(data.gen)"
+                  name="gender" [(ngModel)]="gender" disabled />
+                <img class="genderIcon na" [src]="data.imgURL">
+                <img class="genderIcon active" [src]="data.imgActURL">
+              </label>
+            </div>
+          </div>
+          <div class="mar-b">
+            <p class="session-creation-h-paras">Amenities available during the session....</p>
+            <div class="form-group">
+
+              <mat-select class="full-width" #mulLoc2 required placeholder="Amenities" multiple [(ngModel)]="selectedAmenities"
+                name="selectedAmenities">
+                <mat-select-trigger>
+                  {{selectedAmenities?.length>0 ? selectedAmenities[0].type_of_amenity : ''}}
+                  <span *ngIf="selectedAmenities?.length > 1" class="example-additional-selection">
+                    (+{{selectedAmenities.length - 1}} {{selectedAmenities?.length === 2 ? 'other'
+                    :
+                    'others'}})
+
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let ame of amenities; let i = index" class="multiple-field-box" [value]="ame">
+                  {{ ame.type_of_amenity }}
+                </mat-option>
+              </mat-select>
+
+
+              <div *ngIf="(amenitiesValue.invalid && (amenitiesValue.dirty || amenitiesValue.touched)) || !emenitiesFlag"
+                class="alert alert-danger">
+                <div *ngIf="amenitiesValue.errors.required">
+                  amenities is required.
+                </div>
+              </div>
+
+            </div>
+
+            <div class="crossed-icons" id="amenities-icons">
+              <div class="selectedItems-wrapper d-flex flex-wrap" *ngIf="selectedAmenities&&selectedAmenities.length>0">
+                <div *ngFor="let spt of selectedAmenities" class="" [ngClass]="{'active': selectedItem == spt.amenity_id}"
+                  class="selectedItem">
+
+                  <div class="img-wrap">
+                    <div class="crossbtn-bg"></div>
+                    <span class="close-btn" (click)="removeAmenities(spt)">&times;</span>
+                    <img src="{{baseUrl}}/assets/{{spt.amenity_image_url}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <hr class="mb-32">
+          <div class="mar-t-b">
+            <p class="session-creation-h-paras para-bot-padding">Group size & ticket rates</p>
+            <div class="form-group selectWrapper">
+              <input type="text" placeholder="groupsize" class="form-control ticket-cost" [formControl]="groupSizeNo"
+                [(ngModel)]="groupSize" [value]="groupSize" (ngModelChange)="groupSizeChange($event)" name="groupSize"
+                required>
+
+            </div>
+            <div *ngIf="(groupSizeNo.invalid && (groupSizeNo.dirty || groupSizeNo.touched)) || !groupSizeFlag" class="alert alert-danger">
+              <div *ngIf="groupSizeNo.errors.required">
+                Group Size is required.
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <input type="text" placeholder="cost" class="form-control ticket-cost" (ngModelChange)="onCostChange($event)"
+                name="cost" id="cost" [value]="cost" [(ngModel)]="cost" [formControl]="costValue" required>
+            </div>
+            <div *ngIf="(costValue.invalid && (costValue.dirty || costValue.touched)) || !costFlag" class="alert alert-danger">
+              <div *ngIf="costValue.errors.required">
+                cost is required.
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="about-coach mar-t-b">
+            <p class="session-creation-h-paras para-bot-padding">A little about you as a coach..</p>
+            <p>{{this.opportunityInstanceDetail.sp_narrative}}</p>
+          </div>
+          <hr>
+          <div class="small-description mar-t-b">
+            <div class="form-group">
+              <p class="session-creation-h-paras para-bot-padding">A small description on what they will
+                be doing..
+              </p>
+              <p>{{this.opportunityInstanceDetail.sp_narrative}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="special-notes mar-t-b">
+            <div class="form-group">
+              <p class="session-creation-h-paras special-note para-bot-padding ">Special Notes if any..</p>
+              <textarea class="form-control br-1" rows="5" [value]="specialNodes" [(ngModel)]="specialNodes"
+                placeholder="Your special notes for the session..." name="specialNodes" [formControl]="splNotesValue"
+                required (ngModelChange)="splNotesChange($event)"></textarea>
+
+              <div *ngIf="(splNotesValue.invalid && (splNotesValue.dirty || splNotesValue.touched))|| !splNotesFlag"
+                class="alert alert-danger">
+                <div *ngIf="splNotesValue.errors.required">
+                  special notes is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="cancellation-policy mar-t-b">
+            <hr class="d-sm-none">
+            <h4>Flexible cancellation policy</h4>
+            <p class="session-details-paras">Any class can be cancelled and fully refunded within 24 hours
+              of purchase. <a href="">
+                <span class="cancel-policy yellow-text">See Cancellation policy.</span></a>
+            </p>
+            <hr class="d-sm-none">
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 pl-40">
+        <div>
+          <div class="session-locations">
+            <p class="session-creation-h-paras">Locations where the session are held..</p>
+
+            <div class="form-group selectWrapper">
+              <select placeholder="Search and press enter" [(ngModel)]="parentVenueObj" (ngModelChange)="onChangeParentVenueDetails($event)"
+                class="form-control type selectBox " [formControl]="parentVenue" required>
+                <option *ngFor="let venue of venueDetails" [ngValue]="venue">{{venue["venue"]}}</option>
+              </select>
+            </div>
+
+            <div class="form-group selectWrapper">
+
+              <select placeholder="Search and press enter" [(ngModel)]="venueChaild" [formControl]="venue" required
+                class="form-control type selectBox " (ngModelChange)="onChangeVenueDetails($event)">
+                <option *ngFor="let cvenue of venueChaildDetails" [ngValue]="cvenue">{{cvenue["venue"]}}</option>
+              </select>
+            </div>
+
+            <div class="session-location-map" id="location-map" style="height:373px; width:100%;">
+              <app-googlemaps></app-googlemaps>
+            </div>
+          </div>
+          <!-- <div class="flooring mar-t-b">
+              <div>
+                <p class="session-creation-h-paras">Flooring</p>
+                <small>Specify the type of flooring</small>
+              </div>
+              <div class="mar-top-8">
+                <mat-radio-group>
+                  <mat-radio-button *ngFor="let surface of surfaceQuality" [value]="surface.surface_quality_id" [checked]="surface.flag"
+                    class="col-sm-4 radio-btn-style">{{surface.surface_quality}}</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div> -->
+          <div class="age mar-t-b">
+            <p class="session-creation-h-paras">Age</p>
+            <small>Specify age for this group</small>
+            <div class="mar-top-8 age-groups row">
+              <div class="form-check-inline col-6 col-md-6 col-lg-3 col-xl-3" *ngFor="let age of tagetAgeGroup; let i = index;">
+                <mat-checkbox class="example-margin checkbox-style" [checked]="age.flag==='true'" [value]="age.flag"
+                  (change)="onAgeChange($event, i, age)">{{age.target_age_group}}</mat-checkbox>
+              </div>
+              <div *ngIf="ageGroupFlag" class="alert alert-danger">
+                Please select age group.
+              </div>
+            </div>
+            <div class="type form-group" id="">
+              <label class="col-2 col-sm-2 col-form-label session-creation-h-paras type-title">Type</label>
+              <div class="col-10 col-sm-10 float-right">
+
+                <div class="form-group selectWrapper">
+                  <!--   <select placeholder="Search and press enter" name="consumerExpertObj" [(ngModel)]="consumerExpertObj"
+                    class="form-control type selectBox">
+                    <option *ngFor="let obj of consumerExpert" [value]="obj.consumer_expertise_id">{{obj.consumer_expertise}}
+                    </option>
+                  </select> -->
+                  <input type="text" disabled placeholder="" class="form-control ticket-cost" [(ngModel)]="consumerExpertObj"
+                    [value]="consumerExpertObj" name="consumerExpertObj" required>
+                </div>
+              </div>
+              <hr class="d-sm-none">
+            </div>
+            <div class="clearfix"></div>
+            <!-- <div class="type mar-t-b" id="">
+                <p class="session-creation-h-paras type-title">Type</p>
+                <div class="form-group selectWrapper">
+                  <select placeholder="Search and press enter" class="form-control type selectBox" [(ngModel)]="consumerExpertObj"
+                    (ngModelChange)="onChangeConsumerExpert($event)">
+                    <option *ngFor="let obj of consumerExpert" [ngValue]="obj">{{obj["consumer_expertise"]}}</option>
+                  </select>
+                </div>
+                <hr class="d-sm-none">
+              </div> -->
+          </div>
+          <div class="session-happening mar-t-b">
+            <app-calendar (calendarChanged)="calenderHandler($event)" [calendarData]="calendarObj"></app-calendar>
+            <div class="form-group">
+              <div *ngIf="calendarFlag" class="alert alert-danger">
+                Please select calendar value.
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+        </div>
+        <!-- 2 column end -->
+      </div>
+    </div>
+    <hr>
+    <!-- End of 2 layout coloumn -->
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="thumbnails">
+          <div class="form-group mar-t-thumbnail-title">
+            <label class="session-creation-h-paras thumbnail-title">Choose a Thumbnail for a session..</label>
+            <input type="text" class="form-control thumbnail-search" id="session-thumbnail" placeholder="Search.."
+              (keyup)="onImageSearch($event.target.value)">
+          </div>
+
+          <div class="thumbnail-img sess-thumb">
+            <div class="d-flex flex-wrap justify-content-space mb-3 scrolling-img-wrapper">
+              <label *ngFor="let images of imageDetails" class="p-2  col-sm-12 col-md-6 col-lg-3 col-xl-3 scrolling-img">
+                <input type="radio" [(ngModel)]=imageSearch name="imageSearch" [value]="images.image_id" (change)="onImageChange(images.image_id, $event.target.checked)"
+                  class="radioImage" />
+                <img src="{{baseUrl}}/assets/coach/photos/{{images.image_url}}" class="img-fluid scroll-image" alt="{{images.image_name}}">
+              </label>
+              <div class="form-group">
+                <div *ngIf="imagesFlag" class="alert alert-danger validationFlag">
+                  Please select image.
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-3"></div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-light btn-lg draft-btn" id="save-to-draft" (click)="prepareSessionCreateObj(0)">SAVE
+              TO DRAFT</button>
+          </div>
+          <!-- <div class="col-6 col-sm-4 col-md-3">
+            <button type="button" class="btn btn-light btn-lg preview-btn" id="preview" (click)="prepareSessionCreateObj(1)">PREVIEW</button>
+          </div> -->
+          <div class="col-md-3">
+            <button type="button" class="btn btn-light btn-lg publish-btn active" id="publish" (click)="prepareSessionCreateObj(2)">PUBLISH</button>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <div *ngIf="sessionValidationFlag" class="alert alert-danger validationFlag">
+            Please fill all fields.
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End of Thumbnails -->
+<section class="Sessions d-none d-sm-block">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 sessions-block d-flex justify-content-between">
+        <h4>Past sessions</h4>
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link page-link-styling" href="">See all</a></li>
+            <li class="page-item">
+              <a class="page-link page-link-styling" href="" aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="d-flex flex-wrap justify-content-space mx-3">
+          <div class="card-deck">
+            <div class="card card-block">
+              <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+              <div class="card-body card-body-pl">
+                <h6 class="card-title">BASKETBALL</h6>
+                <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                <p>$120 per person</p>
+              </div>
+            </div>
+            <div class="card card-block">
+              <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+              <div class="card-body card-body-pl">
+                <h6 class="card-title">BASKETBALL</h6>
+                <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                <p>$120 per person</p>
+              </div>
+            </div>
+            <div class="card card-block">
+              <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+              <div class="card-body card-body-pl">
+                <h6 class="card-title">BASKETBALL</h6>
+                <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                <p>$120 per person</p>
+              </div>
+            </div>
+            <div class="card card-block">
+              <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+              <div class="card-body card-body-pl">
+                <h6 class="card-title">BASKETBALL</h6>
+                <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                <p>$120 per person</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

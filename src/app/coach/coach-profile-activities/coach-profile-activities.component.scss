@@ -1,0 +1,468 @@
+@import "~styles/variables";
+.page-headline h1 {
+  // font-size: 72px;
+  color: #FFCE00;
+}
+
+.coach-activities {
+  min-height: 80%;
+  padding-top: 20px;
+  font-family: $font-family;
+  height: auto;
+  display: block;
+}
+
+.createOrg {
+  font-size: 24px;
+  color: #474849;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+.btn-disable{
+  background-color:grey;
+}
+.wishTxt {
+  color: #5C5C5C;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 0 0 20px 0;
+}
+.back{
+  cursor: pointer;
+  color: #5C5C5C;
+}
+.addOrg {
+  font-family: 'Lato', sans-serif;
+  color: #000000;
+  font-size: 16px;
+  clear: both;
+  opacity: 0.7;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.createOrg-sportWrapper,
+.createOrg-locationWrapper,
+.createOrg-rangeWrapper,
+.createOrg-floorWrapper,
+.createOrg-ageWrapper,
+.createOrg-typeWrapper,
+.createOrg-certificateWrapper {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.labelWrapper {
+  height: 30px;
+  line-height: 34px;
+  opacity: 0.7;
+  .boldLabel {
+    font-size: 16px;
+  }
+  .infoLabel {
+    font-size: 9px;
+    width: 90%;
+  }
+}
+
+.nouislider {
+  width: 50%;
+  margin-top: 10px !important;
+}
+
+.rangeUnits {
+  margin: 8px 0 0 8px;
+}
+
+.ng-select.custom {
+  width: 82%;
+  height: 36px;
+  margin: 0;
+  padding: 0px;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
+  @include border-radius(45px);
+  background-color: #fff;
+}
+
+.floorSelection {
+  width: 100%;
+  .mat-radio-button {
+    margin-right: 30px;
+    margin-top: 7px;
+    font-size: 13px;
+  }
+}
+
+.coach-activities .mat-checkbox {
+  margin-right: 25px;
+  min-width: 120px;
+}
+
+mat-slider {
+  width: 40%;
+}
+
+.genderWrapper {
+
+  label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  label>input {
+    /* HIDE RADIO */
+    visibility: hidden;
+    /* Makes input not-clickable */
+    position: absolute;
+    /* Remove input from document flow */
+  }
+  label {
+    /* IMAGE STYLES */
+    cursor: pointer;
+    border: 2px solid transparent;
+    input ~ img.na {
+      display: block
+     }
+    input ~ img.active{
+       display: none
+      }
+      input:checked ~ img.na {
+      display: none
+      }
+      input:checked ~ img.active{
+          display: block
+      }
+  }
+}
+
+.genderIcon {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.ageSelection {
+  width: 100%;
+  .mat-radio-button {
+    margin-right: 20px;
+    margin-top: 9px;
+    font-size: 12px;
+  }
+}
+
+.createOrg-typeWrapper .ng-select.custom {
+  width: 56%;
+  margin-right: 15px;
+}
+
+.createOrg-typeWrapper input {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
+  @include border-radius(45px);
+  height: 36px;
+  width: 20%;
+  border: none;
+} //
+.selectedItems-wrapper {
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .selectedItem {
+    background: linear-gradient(to right, #FFE200 40%, #FFC400);
+
+    color: #fff;
+    white-space: nowrap;
+    border-radius: 8px;
+    line-height: 1.4;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    background-repeat: no-repeat;
+    position: relative;
+    font-size: 17px;
+    &:hover {
+      background: transparent;
+      border: 2px solid #FFCE00;
+      color: #474849;
+    }
+    .header-item{
+      padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 25px;
+    }
+    span {
+      font-size: 12px;
+      float: right;
+      color: #474849;
+      line-height: 27px;
+    }
+    span.closeSelSport {
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 25px;
+      /* padding: 10px; */
+      background: red;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      color: #fff;
+      transform: translate(-50%, -50%);
+    }
+    &:before {
+      content: "⟫";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &.active:before {
+      content: "⟪";
+    }
+  }
+  .selectedItem.active {
+    background: transparent;
+    border: 2px solid #FFCE00;
+    color: #474849;
+  }
+}
+
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+
+.mat-expansion-panel-spacing {
+  border-radius: 15px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+}
+
+.subhead {
+  font-family: 'Helvetica Neue';
+  font-size: 20px;
+}
+
+.loadingPlaceholder {
+  width: 100%;
+  min-height: 300px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: #fafafa;
+    border-radius: 10px;
+    padding: 40px;
+}
+.empty-img{
+  max-width: 400px;
+}
+.coach-activity-container::ng-deep {
+  padding: 25px;
+  .ng-select.custom {
+    width: 100%;
+    height: 50px;
+    .ng-control {
+      height: 50px;
+      line-height: 36px;
+      padding: 0px 15px;
+    }
+  }
+  .ng-select.ng-multiple .ng-control .ng-value-container .ng-value {
+    @extend .activity-title;
+    padding: 0px 18px !important;
+    border: 0;
+    color: #000000;
+    position: relative;
+    .ng-value-icon.left {
+      border: 0;
+      display: none;
+    }
+    &:hover {
+      background: darker(rgba(219, 219, 219, .48), 20%);
+      .ng-value-icon.left {
+        position: absolute;
+        display: inline;
+        left: 2px;
+        background: transparent;
+      }
+    }
+  }
+  .noUi-horizontal {
+    height: 13px;
+  }
+  .nouislider {
+    width: 100%;
+    .noUi-target {
+      background: transparent;
+      border-radius: 4px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.14);
+      border-radius: 20px;
+      border: 0;
+    }
+    .noUi-handle {
+      padding: 20px;
+      border: 0;
+      border-radius: 50%;
+      top: -14px;
+    }
+    .noUi-tooltip {
+      border: 0;
+      background: #CAE8A1;
+      box-shadow: unset;
+      border-radius: 50%;
+      line-height: 33px;
+      color: #141414;
+    }
+    .noUi-handle-upper .noUi-tooltip {
+      background: #6DAF14;
+    }
+    .noUi-connect {
+      background: transparent;
+    }
+  }
+  .mat-radio-button {
+    margin-right: 10px;
+    .mat-radio-outer-circle {
+      border-color: transparent;
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.16);
+    }
+    &.mat-radio-checked .mat-radio-inner-circle {
+      background-color: #FFCE00;
+    }
+    .mat-radio-label-content {
+      font-family: Montserrat;
+    }
+  }
+  .mat-checkbox .mat-checkbox-frame {
+    border: 0;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 50%;
+  }
+  .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #FFCE00;
+    margin: 5px;
+    border-radius: 50%;
+    svg {
+      display: none;
+    }
+  }
+}
+
+.activity-titile-wrapper {
+  box-shadow: 0px 0px 5px rgba(3, 3, 3, .2);
+  border-radius: 30px;
+  display: block;
+  padding: 7px;
+}
+
+.activity-title,
+.item-card {
+  background: rgba(219, 219, 219, .48);
+  padding: 8px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 14px;
+  white-space: nowrap;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.form-control.title-input {
+  padding: 16px;
+  box-shadow: 0px 0px 5px rgba(3, 3, 3, 0.2);
+  border-radius: 30px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+@media(max-width:768px) {
+  .coach-activities {
+    padding: 0px;
+  }
+  .createOrg {
+    font-size: 34px;
+    margin-bottom: 0;
+  }
+  .wishTxt {
+    font-size: 16px;
+  }
+  .span.closeSelSport {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
+  .selectedItems-wrapper .selectedItem.active {
+    background: transparent;
+    border: 2px solid transparent;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    &::before{
+        bottom: 0px;
+        right: 50%;
+        top: inherit;
+        transform: translate(-50%,0);
+        transform: rotate(90deg)
+    }
+  }
+  .activivity_name {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Montserrat;
+  }
+
+  .coach-activity-container {
+    padding: 15;
+    >.row {
+      margin-bottom: 15px;
+    }
+    .subhead-container {
+      margin-bottom: 20px;
+    }
+    .form-control.title-input {
+      padding: 10px;
+    }
+
+  }
+  .coach-activity-container .mat-radio-button .mat-radio-label-content{
+    font-weight: 400;
+    font-size: 11px !important;
+  }
+
+  .activity-titile-wrapper {
+    padding: 0;
+    box-shadow: unset;
+    .activity-title {
+      background: transparent;
+      padding: 0;
+      font-size: 1.5rem;
+      text-align: left;
+      margin-bottom: 20px;
+      width: 75%;
+      line-height: initial;
+      border-radius: unset;
+    }
+    >.closetab {
+      margin-top: 8px;
+      font-weight: normal;
+    }
+  }
+}

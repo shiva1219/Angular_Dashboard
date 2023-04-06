@@ -1,0 +1,402 @@
+<div class="container-fluid header p-0">
+
+  <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center" [ngClass]="{'noBorder':navbarProgressWidth==0}">
+    <a href="/" class="navbar-brand d-flex w-30 mr-auto"><b>Koola</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3" (click)="isCollapsed = !isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="isSearch; then searchShow"></div>
+    <ng-template #searchShow>
+      <div class="row search-row">
+        <div class="col-md-8  col-8 autoComplte">
+          <div ng2-auto-complete>
+            <input class="form-control" [(ngModel)]="searchkey" #searchData placeholder="Search for sport, place, level and organisation.." />
+          </div>
+        </div>
+        <div class="col-md-4  col-4 btnWrapper">
+          <img src="./assets/microphone.png" class="microphone d-md-block d-none">
+          <!-- <button class="btn btn-search" type="button" routerLink="/profile">SEARCH</button> -->
+          <button class="btn btn-search" type="button" (click)="titleChange($event,searchData.value)">SEARCH</button>
+        </div>
+      </div>
+    </ng-template>
+    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3" [collapse]="!isCollapsed">
+
+      <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+        <li class="nav-item" *ngIf="isSignIn">
+          <a class="nav-link" href="#" (click)="ModalSignIn.show();isCollapsed = !isCollapsed">Sign In</a>
+
+        </li>
+        <li class="nav-item" *ngIf="isSignUp">
+          <a class="nav-link" href="#" (click)="ModalSignUp.show();isCollapsed = !isCollapsed">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']">Help</a>
+        </li>
+        <li class="nav-item" *ngIf="isAlreadyCoach">
+          <a class="nav-link" href="javascript:void(0);" (click)="BecomeCoach();isCollapsed = !isCollapsed">Become a
+            coach</a>
+        </li>
+        <li class="nav-item" *ngIf="isCartItem">
+          <i class="fa fa-shopping-cart fa-cart" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="btn-group profile-wrapper" *ngIf="validUser" dropdown #dropdown="bs-dropdown">
+      <span dropdownToggle class=" dropdown-toggle" class="profile-img img-circle">{{name}}</span>
+      <!-- <img dropdownToggle  class=" dropdown-toggle" src="http://primitivegroup.in/wp-content/uploads/2017/08/IMG_2229-500x500.jpg" class="profile-img img-circle"> -->
+
+      <ul *dropdownMenu class="dropdown-menu profileMenu" role="menu">
+        <!-- <img  (click)="dropdown.hide()"  src="http://primitivegroup.in/wp-content/uploads/2017/08/IMG_2229-500x500.jpg" class="profile-view" > -->
+
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem" *ngIf="validUser"><a class="dropdown-item" href="#">{{userName}}</a></li>
+        <li *ngIf="validUser" class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Dashboard</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/session']">Sessions</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Groups</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="Javascript:void(0)" (click)="LogOut()">Sign Out</a>
+        </li>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="dropdown.hide()"><span aria-hidden="true">&times;</span>
+        </button>
+      </ul>
+    </div>
+
+  </nav>
+  <div class="navbar-progress d-none d-sm-block" [style.width.%]="navbarProgressWidth"></div>
+</div>
+<!--koolaSignIn  -->
+<div class="modal fade koolaSignIn" bsModal #ModalSignIn="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignIn.hide();reserErrorMessages();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="SignInForm" (ngSubmit)="submitSignInForm(SignInForm)" validate>
+          <div class="errorMessage">
+            <mat-error *ngIf="error">
+              <ul>
+                <li *ngFor="let errors of errorMessages">
+                  <strong>{{errors}}</strong>
+                </li>
+              </ul>
+            </mat-error>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Email" [(ngModel)]="email" [formControl]="SignInForm.controls['email']"
+              [errorStateMatcher]="matcher" />
+            <mat-error *ngIf="SignInForm.controls['email']">
+              User email is <strong>required</strong>
+
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password" [formControl]="SignInForm.controls['password']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignInForm.controls['password']">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <div class="chekboxwrapper">
+            <mat-checkbox class="float-left" [ngModel]="rememberMe" [formControl]="SignInForm.controls['rememberMe']">Remember
+              Me</mat-checkbox>
+            <span class="float-right"><a href="#" (click)="ModalSignIn.hide();ModalForgotPassword.show();reserErrorMessages();">Forgot
+                Password?</a></span>
+          </div>
+          <div class="row-popup">
+
+            <!-- <button class="btn-singUp" [disabled]="!SignInForm.valid" (click) = "ModalSignIn.hide()" >SIGN IN</button> -->
+            <button class=" btn btn-singUp" [disabled]="!SignInForm.valid" [ngClass]="{'btn-disable': !SignInForm.valid}">SIGN
+              IN</button>
+          </div>
+        </form>
+        <div class="orUsing">
+          <span>Or using</span>
+        </div>
+        <div class="iconWrapper">
+          <a href="#">
+            <img src="./assets/SignUp/facebook-letter-logo.png" class="fb-signup">
+          </a>
+          <a href="#">
+            <img src="./assets/SignUp/search.png" class="fb-signup">
+          </a>
+        </div>
+        <div class="signUp">
+          <span>Not a Memeber yet? <a href="#" (click)="ModalSignIn.hide() ; ModalSignUp.show();reserErrorMessages();">SignUp</a></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- koolaForgotPassword -->
+<div class="modal fade koolaForgotPassword" bsModal #ModalForgotPassword="bs-modal" [config]="{backdrop: 'static'}"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ModalForgotPassword.hide();reserErrorMessages();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ForgotPassword" (ngSubmit)="submitForgetPassword(ForgotPassword)">
+
+          <div class="pwdRestLabel">
+            <div class="headerLabel">Password Reset</div>
+            <div class="infoLabel">Enter your email address to reset the password</div>
+          </div>
+          <div class="errorMessage">
+            <mat-error *ngIf="error">
+              <ul>
+                <li *ngFor="let errors of errorMessages">
+                  <strong>{{errors}}</strong></li>
+              </ul>
+            </mat-error>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Email" [formControl]="ForgotPassword.controls['email']" [errorStateMatcher]="matcher"
+              [(ngModel)]="email" />
+            <mat-error *ngIf="ForgotPassword.controls['email']">
+              User email is <strong>required</strong>
+
+            </mat-error>
+          </mat-form-field>
+          <div class="row-popup">
+            <button class="btn btn-singUp" [disabled]="!ForgotPassword.valid" [ngClass]="{'btn-disable': !ForgotPassword.valid}">REQUEST
+              NEW PASSWORD</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--koolaResetPassword  -->
+<div class="modal fade koolaResetPassword" bsModal #ModalResetPassword="bs-modal" [config]="{backdrop: 'static'}"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ModalResetPassword.hide();reserErrorMessages();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ResetPassword" (ngSubmit)="submitResetPassword(ResetPassword)">
+
+          <div class="pwdRestLabel">
+            <div class="headerLabel">Password Reset</div>
+          </div>
+          <div class="errorMessage">
+            <mat-error *ngIf="error">
+              <ul>
+                <li *ngFor="let errors of errorMessages">
+                  <strong>{{errors}}</strong></li>
+              </ul>
+            </mat-error>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Email" [formControl]="ResetPassword.controls['email']" [errorStateMatcher]="matcher"
+              [(ngModel)]="email" />
+            <mat-error *ngIf="ResetPassword.controls['email']">
+              User email is <strong>required</strong>
+
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Verification code" [formControl]="ResetPassword.controls['code']"
+              [errorStateMatcher]="matcher" />
+            <mat-error *ngIf="ResetPassword.controls['code']">
+              Verification code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="New Password" [formControl]="ResetPassword.controls['password']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="ResetPassword.controls['password']">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password" [formControl]="ResetPassword.controls['confirm']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="ResetPassword.controls['confirm']">
+              Password <strong>mismatch</strong>
+            </mat-error>
+
+          </mat-form-field>
+          <div class="row-popup">
+            <button class="btn btn-singUp" [disabled]="!ResetPassword.valid" [ngClass]="{'btn-disable': !ResetPassword.valid}">SUBMIT</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--koolaSignUpVerification  -->
+<div class="modal fade koolaSignUpVerification" bsModal #ModalSignUpVerification="bs-modal" [config]="{backdrop: 'static'}"
+  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignUpVerification.hide();reserErrorMessages();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="SignUpVerification" (ngSubmit)="submitSignUpVerification(SignUpVerification)">
+          <div class="errorMessage">
+            <mat-error *ngIf="error">
+              <ul>
+                <li *ngFor="let errors of errorMessages">
+                  <strong>{{errors}}</strong></li>
+              </ul>
+            </mat-error>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Verification code" [formControl]="SignUpVerification.controls['code']"
+              [errorStateMatcher]="matcher" />
+            <mat-error *ngIf="SignUpVerification.controls['code']">
+              Verification code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [formControl]="SignUpVerification.controls['password']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignUpVerification.controls['password']">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Confirm Password" [formControl]="SignUpVerification.controls['confirm']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignUpVerification.controls['confirm']">
+              Password <strong>mismatch</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="row-popup">
+            <button class="btn btn-singUp" [disabled]="!SignUpVerification.valid" [ngClass]="{'btn-disable': !SignUpVerification.valid}"
+              (click)="ModalSignUpVerification.hide()">Submit</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--koolaSignUp  -->
+<div class="modal fade koolaSignUp" bsModal #ModalSignUp="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignUp.hide();reserErrorMessages();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="SignUpForm" (ngSubmit)="submitSignUpForm(SignUpForm)">
+          <div class="errorMessage">
+            <mat-error *ngIf="error">
+              <ul>
+                <li *ngFor="let errors of errorMessages">
+                  <strong>{{errors}}</strong>
+                </li>
+              </ul>
+            </mat-error>
+          </div>
+          <mat-form-field>
+            <input matInput placeholder="Email" [formControl]="SignUpForm.controls['email']" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignUpForm.hasError('email') && !SignUpForm.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="SignUpForm.controls['email']">
+              Email is <strong>required</strong>
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="First name" [formControl]="SignUpForm.controls['firstname']"
+              [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignUpForm.controls['firstname']">
+              firstname is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last name" [formControl]="SignUpForm.controls['lastname']" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="SignUpForm.controls['lastname']">
+              lastname is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- <mat-form-field>
+                    <input matInput type="password" placeholder="Password"
+                    [formControl]="SignUpForm.controls['password']" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="SignUpForm.controls['password']">
+                    Password is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                  <input  matInput
+                   placeholder="Date of birth"
+                   #dp="bsDatepicker"
+                   bsDatepicker
+                   [bsValue]="bsValue"
+                   [formControl]="SignUpForm.controls['date']" [errorStateMatcher]="matcher" >
+                   <mat-error *ngIf="SignUpForm.controls['date']">
+                      Date is <strong>required</strong>
+                   </mat-error>
+            </mat-form-field>    -->
+          <div class="chekboxwrapper">
+            <mat-checkbox class="mat-checkbox" [formControl]="SignUpForm.controls['marketingPolicy']"></mat-checkbox>
+            <p>I would like to receive marketing & policy
+              communcation from Primitive and its partners.</p>
+            <mat-checkbox class="mat-checkbox" [formControl]="SignUpForm.controls['terms']" [checked]="true">
+              I agree to <a href="#" class="koola-agree">Primitive terms & sevice, community commitment and other.</a>
+            </mat-checkbox>
+          </div>
+          <button class="btn btn-singUp" [disabled]="!SignUpForm.valid" [ngClass]="{'btn-disable': !SignUpForm.valid}">SIGN
+            UP</button>
+          <!-- <button class="btn-singUp"  (click) = "submitSignUpForm"  >SIGN UP</button> -->
+        </form>
+        <div class="orUsing">
+          <span>Or using</span>
+        </div>
+        <div class="iconWrapper">
+          <a href="#">
+            <img src="./assets/SignUp/facebook-letter-logo.png" class="fb-signup">
+          </a>
+          <a href="#">
+            <img src="./assets/SignUp/search.png" class="fb-signup">
+          </a>
+        </div>
+        <div class="signUp">
+          <span>Already a Memeber?
+            <a href="#" (click)="ModalSignUp.hide(); ModalSignIn.show();reserErrorMessages();">SignIn</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+T---https://xd.adobe.com/view/682c82ed-7446-4132-84fa-f785cb5cc29a/
+M---https://xd.adobe.com/view/b026857a-e293-4b93-9077-98af5ae320d4/
+https://xd.adobe.com/view/e823b7bc-de49-4b05-aed9-aa3904f9e505/
+
+https://xd.adobe.com/spec/ef49d02f-e53a-406b-afce-75b6f1580e9f
+
+ng g c ./shared/header --fla -d
+ng g c ./shared/autoComplete --fla -d
+ng g c ./profile/userProfile --fla -d
+ng g c ./profile/coachProfile --fla -d
+ng g d ./customDirectives/confirmPassword --fla -d
+
+ng g s ./services/aws --fla -d
+
+https://www.cssmatic.com/box-shadow
+
+https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+https://www.templatemonster.com/blog/css-media-queries-for-all-devices-and-browsers-including-ie7-and-ie8/
+https://responsivedesign.is/develop/browser-feature-support/media-queries-for-common-device-breakpoints/
+
+
+
+https://valor-software.com/ngx-bootstrap/#/dropdowns
+
+https://primitivegroup.atlassian.net/wiki/spaces/US/pages/146341889/Dreamfactory+identity+module+APIs
+
+http://pgapitest.uneaksoft.com/
+
+
+
+get apis
+https://primitivegroup.atlassian.net/wiki/spaces/US/pages/151322705/Service+Provider+V+KOOLA+APIs
+
+https://xd.adobe.com/view/d2a291fd-9a17-46a9-5e4b-66df4f440a0e-a493/ ---Mobile
+https://xd.adobe.com/spec/352998fa-d443-4828-61e2-9a1deabe5d33-4318/
+
+https://xd.adobe.com/view/6884e920-82ac-4620-55b0-87eb043e4175-1eb5/ --Desktop
+https://xd.adobe.com/spec/db03f90f-c5ef-473a-75eb-2337e4314ad1-ad32/

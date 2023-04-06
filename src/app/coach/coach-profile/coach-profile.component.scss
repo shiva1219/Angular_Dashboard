@@ -1,0 +1,122 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius !important;
+       -moz-border-radius: $radius !important;
+        -ms-border-radius: $radius !important;
+            border-radius: $radius !important;
+  }
+
+  .koola-coachProfile{
+      font-family: 'Montserrat', sans-serif;
+      width: 100%;
+      height: 100%;
+      background-size: 100%;
+      padding-top: 20px;
+      .row{
+          margin: 0;
+          .page-headline{
+            font-size: 72px;
+            color: #FFCE00;
+          }
+          .serviceWrapper{
+              height: 100%;
+             .createOrg{
+                  font-size: 22px;
+                  color: #000000;
+                  font-weight: 700;
+                  margin-top: 15px;
+              }
+              .wishTxt{
+                  color: #474849;
+                  font-family: 'Montserrat', sans-serif;
+                  font-size: 14px;
+                  margin: 5px 0 35px 0;
+              }
+              .addOrg{
+                  font-family: 'Montserrat', sans-serif;
+                  color: #474849;
+                  font-size: 22px;
+                  clear: both;
+             }
+              .mat-inputField{
+                  display: block;
+                  padding: 0;
+                  margin: 1% 3% 1% 0;
+                  font-size: 14px;
+            }
+              .locationWrapper{
+                  width: 100%;
+                  display: block;
+                  margin-top: 30px;
+            }
+            
+            .cProf-mobIndctr{
+                min-height: 100px;
+                padding: 20px 0;
+                ul{
+                    height: 25px;
+                    width:  150px;
+                    margin: auto;
+                    padding: 0;
+                    li{
+                        width: 50px;
+                        height: 5px;
+                        margin-right: 5px;
+                        margin-left: 5px;
+                        background-color: rgb(131, 128, 128);
+                        display: inline-block;
+                        &.black{
+                            background-color: #000;
+                        }
+                        &.yellow{
+                            background-color:#FFCE00;
+                        }
+                    }
+                }
+                .circulerNext{
+                    background-color: #FFCE00;
+                    width: 45px;
+                    height: 45px;
+                    @include border-radius(45px);
+                    position: absolute;
+                    right: 10%;
+                    padding: 10px 5px 10px 10px;
+                }
+
+            }
+            .btn-disable{
+                background-color:grey;
+            }
+              .navigationWrapper{
+                  height: 35px;
+                  .nav-btn-submit{
+                      background-color: #FFCE00;
+                      width: 120px;
+                      @include border-radius(45px);
+                      height: 35px;
+                      margin-left: 5px;
+                      font-weight: 800;
+                      font-size: 12px;
+                      border: 0px;
+                      float: right;
+                  }
+            }
+          }
+      }
+      .error {
+        color: red;
+        margin-top: 5px;
+        display: inline-block;
+      }
+  }
+      
+  @media(max-width:736px) and (orientation: Portrait){
+      .koola-coachProfile{
+        .cProf-mob-v1 .mat-inputField {
+            margin: 5% 3% 5% 0 !important;
+        }
+        .cProf-mob-v2 .mat-inputField {
+            margin: 0.3% 3% 0.3% 0 !important;
+        }
+      }
+  }
+  

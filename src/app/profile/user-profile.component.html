@@ -1,0 +1,105 @@
+<div class="koola-userProfile">
+	<div class="contentWrapper">
+		<div class="contentRow1">Welcome to Primitive</div>
+		<div class="contentRow2">Coaches and students on Primitive are real people with real dreams.</div>
+		<div class="contentRow3">That’s why you’ll have to confirm a few, quick details to activate your account.</div>
+		<div class="contentRow4">Just 4 more steps remaining</div>
+	</div>
+	<div class="row infoWrapper">
+		<div class="col-md-3">
+			<div class="statusWrapper">
+				<div class="outerCircle">
+					<div class="innerCircle">
+						<span>1</span>
+					</div>
+				</div>
+				<div class="line"></div>
+			</div>
+			<div class="labelWrapper">Add profile photo</div>
+			<div class="imgWrapper">
+				<div class="imgCircle" id="imgUpload" (click)="uploadImg()">
+					<input type="file" id="avatar" style="display:none;" (change)="onFileChange($event)" #fileInput>
+				</div>
+			</div>
+			<div class="orLabel">or</div>
+			<div class="facebookPhoto">Use facebook photo</div>
+		</div>
+		<div class="col-md-3">
+			<div class="statusWrapper">
+				<div class="outerCircle">
+					<div class="innerCircle grayCir">
+						<span>2</span>
+					</div>
+				</div>
+				<div class="line"></div>
+
+			</div>
+			<div class="labelWrapper">Confirm your phone number</div>
+			<!-- <div class="phone-email-wrapper">
+				<div class="syncLabel">Country</div>
+				<div class="btn-group">
+					<mat-form-field>
+						<mat-select [(ngModel)]="selectedValue">
+							<mat-option>None</mat-option>
+							<mat-option *ngFor="let country of Countries" [value]="country.CountryCode">{{country.CountryName}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="syncLabel">Phone number</div>
+				<mat-form-field>
+					<input matInput placeholder="(+61)" value={{selectedValue}}/>
+				</mat-form-field>
+			</div> -->
+			<div class="phoneLabel">Standard message and data rates may apply</div>
+			<div class="phoneBtn">Confirm phone number</div>
+		</div>
+		<div class="col-md-3">
+			<div class="statusWrapper">
+				<div class="outerCircle">
+					<div class="innerCircle grayCir">
+						<span>3</span>
+					</div>
+				</div>
+				<div class="line"></div>
+
+			</div>
+			<div class="labelWrapper">Check your mail</div>
+			<div class="phone-email-wrapper">
+				<div class="syncLabel">Email</div>
+				<mat-form-field class="text-center">
+					<input matInput placeholder="Shiva.MSSk@PrimitiveGroup.In" value={{email}}/>
+				</mat-form-field>
+			</div>
+			<div class="emailLabel">Change Email address</div>
+			<div class="phoneBtn">Resend Email</div>
+		</div>
+		<div class="col-md-3">
+			<div class="statusWrapper">
+				<div class="outerCircle">
+					<div class="innerCircle grayCir">
+						<span>4</span>
+					</div>
+				</div>
+			</div>
+			<div class="labelWrapper">One last thing</div>
+			<div class="syncContentWrapper">
+				You can sync your contacts with Primitive to make sharing your itinery or sharing your friends easier. This is just for you
+				— we wont contact anyone without your permission.
+				<br>
+				<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can remove your contacts at anytime from your
+				<a href="#">account settings</a>
+			</div>
+			<div class="syncLabel">Sync From</div>
+			<div class="iconWrapper">
+				<a href="#">
+					<img src="./assets/SignUp/facebook-letter-logo.png" class="fb-signup">
+				</a>
+				<a href="#">
+					<img src="./assets/SignUp/search.png" class="fb-signup">
+				</a>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="laterBtn">I'll do these later</div>
+</div>

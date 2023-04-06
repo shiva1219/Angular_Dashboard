@@ -1,0 +1,84 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="main-heading">When is the session happening...</h4>
+
+      <form #payload="ngForm" (ngSubmit)=saveCalender(payload)>
+        <div class="form-group mar-bot-10">
+          <div class="row">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 mar-bot-10" *ngFor="let s of sessionObj">
+              <label class="radio-inline checkcontainer">
+                <input type="radio" [(ngModel)]="session_type_id" [name]="session_type_id" [id]="s.id" [value]="s.id"
+                  (change)="handleChange($event)"> {{s.name}}
+                <span class="radiobtn"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <app-onetimecalender *ngIf="session_type_id === '1'" (dateChanged)="dateChangedHandler($event)"
+              [oneTimeCaledar]="calendarDaysObj"></app-onetimecalender>
+
+            <app-everyday *ngIf="session_type_id === '2'" [everyTimeCaledar]="everyDaycalendarDaysObj" (dateChanged)="everyDateChangedHandler($event)"></app-everyday>
+
+            <!--  app-multi-date-picker <app-weekly *ngIf="session_type_name === 'Weekly'"
+               everyDayCaledar      [inputData]="biWeeklyDaysObj" (weeklyCalendarChanged)="weeklyCalendarChangedHandler($event)"></app-weekly>
+ -->
+            <!--  <app-weekly *ngIf="session_type_id === '3'" (weeklyCalendarChanged)="weeklyCalendarChangedHandler($event)"></app-weekly>
+
+ -->
+            <app-weekly *ngIf="session_type_id === '3'" [weeklyCaledar]="weeklycalendarDaysObj" 
+            (weeklyCalendarChanged)="weeklyCalendarChangedHandler($event)"></app-weekly>
+
+            <app-byweekly *ngIf="session_type_id === '4'" [byWeeklyCaledar]="byWeeklycalendarDaysObj"
+              (biWeeklyCalendarChanged)="biWeeklyCalendarChangedHandler($event)"></app-byweekly>
+
+            <app-monthly *ngIf="session_type_id==='5'" [monthlyCalendarInput]="monthlyCalObj" (monthlyCalendarChanged)=" monthlyCalendarChangeHandler($event)">
+            </app-monthly>
+
+            <app-quarterly *ngIf="session_type_id === '6'" (dateChanged)="quarterlyDateChangedHandler($event)"
+              [quarterlyCalendarInput]="quaterlyCalendarObj"></app-quarterly>
+            <div [hidden]="quartValidation" style="color: red">please select month value</div>
+            <app-halfyearly *ngIf="session_type_id === '7'" [halfYearlyCalendarInput]="halfYearlyCalObj" (dateChanged)="halfYearlyDateChangedHandler($event)"></app-halfyearly>
+            <div [hidden]="halfValidation" style="color: red">please select month value</div>
+            <app-annually *ngIf="session_type_id === '8'" [calendarInput]="anualcalendarDaysObj"
+              (annuallyCalendarChanged)="annuallyCalendarChangeHandler($event)"></app-annually>
+
+          </div>
+          <div class="col-md-12">
+
+            <h4 class="main-heading">Start Time & End Time</h4>
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-5 ">
+
+                <div class="form-group">
+                  <!-- [meridians]="startMeridians" -->
+                  <timepicker [(ngModel)]="start_time" name="start_time" id="start_time" class="time-picker"></timepicker>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-5 ">
+                <div class="form-group">
+                  <!-- [meridians]="endMeridians" -->
+                  <timepicker [(ngModel)]="end_time" name="end_time" id="end_time" class="time-picker"></timepicker>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-12 col-lg-2 ">
+                <div class="form-group text-center">
+                  <input type="submit" class="btn btn-primary btn-style" value="ADD 1 MORE">
+                </div>
+              </div>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="dateValidationFlag">{{mainErrorMsg}}</div>
+
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

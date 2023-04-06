@@ -1,0 +1,133 @@
+@import "~styles/variables";
+::ng-deep .k-page-headline {
+  background: $primary;
+  .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  h1 {
+    font-size: 42px;
+    line-height: 50px;
+    color: white;
+  }
+  a {
+    color: black;
+    i {
+      display: none;
+    }
+  }
+  @media(max-width: 736px) {
+    .container {
+      padding: 2rem;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+    h1 {
+      font-size: 26px;
+      line-height: 32px;
+    }
+    a {
+      color: white;
+      display: inline-block;
+      margin-bottom: 1rem;
+      span {
+        display: inline-block;
+      }
+      i {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+::ng-deep .k-home-content {
+  background: url(/assets/home_bg.jpg) no-repeat;
+  min-height: calc(100vh - 212px);
+  
+  .k-step-block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    opacity: 0.5;
+    color: white;
+    &:first-of-type {
+      .k-left {
+        border-top-width: 0;
+      }
+    }
+    &.active {
+      opacity: 1;
+      .k-right {
+        display: block
+      }
+    }
+    .k-left {
+      width: 25rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      padding-right: 4rem;
+      border-top: 1px solid white;
+    }
+    .k-right {
+      position: relative;
+      top: 0;
+      right: 0rem;
+      display: none;
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+    p {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      margin: 0;
+    }
+    .go-head-btn {
+      background-color: #FFCE00;
+      width: 135px;
+      border-radius: 45px !important;
+      height: 45px;
+      margin-left: 0;
+      font-weight: 800;
+      font-size: 16px;
+      &:hover,
+      &:focus {
+        color: black;
+      }
+    }
+  }
+  @media(max-width: 736px) {
+    background: none;
+    background-color: white;
+    .container {
+      padding: 0 2rem;
+    }
+    .k-step-block {
+      color: black;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      .k-left {
+        width: 100%;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        padding-right: 0;
+        border-top: 1px solid black;
+      }
+      .k-right {
+        left: 0;
+        right: auto;
+        margin-bottom: 1.5rem;
+      }
+      p {
+        width: 70vw;
+      }
+    }
+  }
+}

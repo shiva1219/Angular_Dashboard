@@ -1,0 +1,38 @@
+<div class="alert alert-danger" role="alert" *ngIf="weeklyValidationFlag">{{mainErrorMsg}}</div>
+<div class="row justify-content-md-center remove-bcolor">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <input placeholder="Start Date" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [(ngModel)]="strDate" class="form-control input-style"
+        (focus)="yearMonthHandler($event)">
+      <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" [startView]="'multi-years'" (yearSelected)="chosenYearHandler($event)"
+        (monthSelected)="chosenMonthHandler($event, dt)" #dt="owlDateTime"></owl-date-time>
+    </div>
+  </div>
+  <div class="col-sm-1">
+    <p class="p-text-center">to</p>
+  </div>
+  <div class="col-sm-4">
+    <div class="form-group">
+      <input placeholder="End Date" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control input-style"
+        [(ngModel)]="endsDate" name="endsDate" (focus)="yearMonthHandler($event)" [disabled]="endDateValidation">
+      <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" [startView]="'multi-years'" (yearSelected)="chosenEndYearHandler($event)"
+        (monthSelected)="chosenEndMonthHandler($event, dt1)" #dt1="owlDateTime"></owl-date-time>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="offset-md-2 col-md-8 text-center">
+
+    <ngb-datepicker [(ngModel)]="model" [disabled]="disabled" #dp [displayMonths]="1" [dayTemplate]="t" class="form-control">
+    </ngb-datepicker>
+
+  </div>
+</div>
+
+<ng-template #t let-date="date" let-focused="focused">
+  <span class="custom-day" (click)="onDateSelection($event,date)" [class.focused]="focused" [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+    [class.faded]="isHovered(date) || isInside(date)" [class.selected]="isDateSelected(date)" (mouseenter)="hoveredDate = date"
+    (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+</ng-template>

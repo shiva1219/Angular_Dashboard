@@ -1,0 +1,284 @@
+
+
+
+/*------------------------------------*\
+  #Dashboard
+\*------------------------------------*/
+
+.search-dashboard {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 16px -2px rgba(0,0,0,0.2);
+}
+    .search-item-container > div { min-width: 18%; }
+
+    .wrapper {
+        padding: 3px 15px 6px 9px;
+    }
+        .search-dashboard p {
+            margin-bottom: 0;
+            padding-left: 2px;
+            letter-spacing: 1.5px;
+            font-size: 75%;
+    }
+        .search-dashboard .dashboard-list p { display: inline; }
+
+.filter img {
+    -ms-transform: rotate(-90deg); 
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    width: 15px;
+    height: 15px;
+}
+    .filter p {
+        font-size: 0.7em;
+    }
+.date-search,.price-search {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border: 1px solid #c6c8c9;
+    padding: 0.2em 2em 0.2em 0.5em;
+    color: #7a7a7a;
+    margin-right: 11px;
+}
+
+.search-amenities-parking,.search-amenities-water,.search-amenities-jerseys {
+    border-radius: 30px; 
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;  
+    color: black;
+    margin-right: 16px;
+}
+    .search-amenities-parking img,.search-amenities-water img,.search-amenities-jerseys img,
+    .per-person-img img {
+        width: 20px;
+        height: 20px;
+    }
+    .search-amenities-parking   { background-color: #ffce00; }
+    .search-amenities-water     { background-color: #71c0dd; }
+    .search-amenities-jerseys   { background-color: #f74949; }
+
+.amenities-adding {
+    border: 1px solid #c6c8c9;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 22px!important;
+    color: #7a7a7a;
+}
+
+
+/*------------------------------------*\
+   #Search-results-items
+\*------------------------------------*/
+
+.custom-list {
+    background-color: white;
+    font-size: 1.3em!important;
+}
+    .custom-list li img {
+        width: 20px;
+        height: 20px;
+    }
+        ul.custom-list li+li:before {
+            padding: 0 0.9rem;
+            color: #e5e5e6;
+            content: "|";
+        }
+    .custom-list li.active-link a {
+        color: #ffce00;
+        font-size: 1.3em;
+        font-weight: 600;
+    }  
+    .custom-list li a {
+        color: #464646;
+    } 
+    .search-addevent-btn {
+        font-size: 0.6em!important;
+        padding: 9px!important;
+        color: #665100!important;
+        border: none;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        background-color: #ffce00;
+        width: 158px;
+    }
+/*------------------------------------*\
+   #Search--item
+\*------------------------------------*/
+
+.search-item {
+    margin: 1.4em 0;
+    position: relative;
+    min-width: 300px;
+    height: 250px;
+}
+    .search-item:nth-child(4n) {
+        margin-right: 0;
+    }
+.search-card-wrapper {
+    position: absolute;
+    left: 79px;
+    z-index: 1;
+    width: 200px;
+}   
+    .search-card-wrapper h4 {
+        font-size: 1em;
+        padding-left: 38px;
+    }
+    .search-card-wrapper .search-card img {
+        max-width: 100%;
+        height: 124px;
+        box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        -moz-box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        position: absolute;
+        top: 72px;
+    }
+    .search-img-overlay {
+        max-width: 100%;
+        height: 124px;
+        position: absolute;
+        top: 72px;
+        background: #6c6a6a;
+        opacity: 0.2;
+    }
+    .search-card .text-img-overlay {
+        position: absolute;
+        top: 48px;
+        left: 27px;
+    }
+    .search-card .text-img-overlay p {
+        font-size: 0.7em;
+        color: #d6d2d2;
+        font-weight: 400;
+        margin-left: 12px;
+    }
+.schedule-and-amenities {
+    position: absolute;
+    z-index: 2;
+}
+    .user-timings-and-cost {
+        width: 100%;
+        height: 100px;
+        box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        -webkit-box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        -moz-box-shadow: 2px 6px 16px 3px rgba(0,0,0,0.2);
+        padding: 0.8rem;
+        background-color: white;
+    }
+        .user-timings-and-cost small {
+            font-size: 49%;    
+        }
+        .user-timings-and-cost .cost-per-person {
+            color: #93d34a;
+            font-size: 0.6em;
+        }
+    .search-icons-wrapper {
+        width: 78px;
+        height: auto;
+    }
+        .search-icon {
+            width: 30px;
+            margin: 7px 4px 2px 0px;
+        }
+        .search-icon div.search-user-icon img {
+                width: 24px!important;
+                height: 24px!important;
+                border-radius: 50%!important;
+            }
+        .search-icon .search-amenities-parking,
+        .search-icon .search-amenities-water,
+        .search-icon .search-amenities-jerseys {
+            border-radius: 19px;
+            -webkit-border-radius: 19px;
+            -moz-border-radius: 19px;
+            -ms-border-radius: 19px;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            padding: 0;
+        }
+        .search-icon .search-amenities-parking img,
+        .search-icon .search-amenities-water img,
+        .search-icon .search-amenities-jerseys img {
+            width: 19px!important;
+            height: 17px!important;
+            padding: 1px 3px!important;
+        }
+.searchbtns {
+    padding: 3px 0px;
+    position: absolute;
+    bottom: 14px;
+    left: -3px;
+}    
+    .search-more-btn,.search-register-btn {
+        font-size: 0.6em!important;
+        letter-spacing: 1px;
+        color: #141414;
+        border: 1px solid #b7b9bb;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+    }
+        .search-more-btn {
+            width: 30%;
+            background-color: #fff;
+        }
+        .search-register-btn {
+            background-color: #ffce00;
+            border: none;
+            width: 50%;
+        }    
+/*------------------------------------*\
+   #Map
+\*------------------------------------*/
+.map {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: rotate(269deg);
+    -webkit-transform: rotate(269deg);
+    -ms-transform: rotate(269deg);
+    letter-spacing: 2px;
+}
+    .map p i, .map p::before {
+        content: '';
+        border: solid black;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 4px;
+        margin: 5px;
+        transform: rotate(47deg);
+        -webkit-transform: rotate(47deg);
+    }
+    
+/*------------------------------------*\
+   #Background Images
+\*------------------------------------*/
+#bgimagewrapper {
+    max-width: 100%;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.2;
+    z-index: -3;
+}
+    #bgimagewrapper .bgimages {
+        width: calc(100%/8);
+        padding: 0;
+    }
+
+

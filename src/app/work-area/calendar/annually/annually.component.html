@@ -1,0 +1,41 @@
+<div class="row justify-content-md-center remove-bcolor">
+  <div class="col-sm-12 col-md-5 ">
+    <div class="form-group">
+      <app-select-year (yearsChanged)=handleSelectYear($event,0) [childData]="startYear"></app-select-year>
+    </div>
+    <div><label [hidden]="startYearConditionValidationFlag" style="color: red">Start Year is not greater that Start
+        Year</label></div>
+
+  </div>
+  <div class="col-sm-12 col-md-2 ">
+    <p class="p-text-center">to</p>
+  </div>
+  <div class="col-sm-12 col-md-5 ">
+    <div class="form-group">
+      <app-select-year (yearsChanged)=handleSelectYear($event,1) [childData]="endYear"></app-select-year>
+    </div>
+    <div>
+      <label [hidden]="endYearConditionValidationFlag" style="color: red">End year is not greater that start year !</label>
+    </div>
+  </div>
+</div>
+<div class="mar-bot-20"></div>
+
+
+<div class="row justify-content-md-center remove-bcolor">
+  <div class="col-sm-12 col-md-5 ">
+    <input type="text" class="form-control input-style" [disabled]=" dateValidationFlag" (focus)="selectDateHandler($event)"
+      [(ngModel)]="selectDate" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" placeholder="Date">
+    <owl-date-time [pickerType]="'calendar'" [pickerMode]="'dialog'" #dt2></owl-date-time>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div><label [hidden]="startEndYearBetweenValidationFlag" style="color: red;text-align:center;margin-top: 10px;">Please
+        select date between start year and end year !</label></div>
+  </div>
+</div>
+
+<div class="mar-bot-20"></div>

@@ -1,0 +1,231 @@
+<div class="koola-coachProfile koola-certificatePage">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="serviceWrapper col-sm-12 ">
+
+          <div class="serviceView-3 ">
+            <div class="row">
+              <div class="nopadding col-11">
+                  <div class="page-headline d-none d-md-block">
+                      <h1>You are in your last step..YAY!!!</h1>
+                  </div>
+              </div>
+              <!-- <div class="col-1">
+                  <div class="page-back d-none d-md-block">
+                      <span>Back</span>
+                  </div>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="infoHeader1 d-none d-md-block col-12">
+                  Get ready for students
+              </div>
+              <div class="infoHeader2 d-none d-md-block col-8">
+                  Get off on the right foot with some details about you, cetifications and other details. Psst! All the following steps are not mandatory. So, you can skip them.. :P
+              </div>
+            </div>
+            <form #createPro="ngForm" [formGroup]="createProfile" (ngSubmit)="submitProfile(createProfile)">
+              <div class="row aboutYouWrapper" [hidden]="mobile && !aboutYouWrapperFlag" >
+                <div class="col-12 aboutYou">About you!</div>
+                <div class="col-12 aboutYouDescription">This is so people can know about you as a coach</div>
+                <div class="col-12 textareaWrapper">
+                  <mat-form-field>
+                    <textarea matInput rows=6 id="descriptionarea" [formControl]="createProfile.controls['description']"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row createOrg-certificateWrapper" [hidden]="mobile && !certificateWrapperFlag">
+                <div class="col-12 nopadding labelWrapper">
+                  <div class="boldLabel">Your certifications</div>
+                  <div class="infoLabel">Select as many as you have completed from the dropdown and keep adding them</div>
+                </div>
+                <div class="row certificationsParent ">
+                   <div class="col-lg-5 col-xl-6 col-12 p-0">
+                      <div class="row no-gutters flex-md-wrap flex-wrap-reverse">
+                        <div class="col-12 col-lg-8">
+                          <mat-form-field>
+                            <mat-select class="col-12 custom" placeholder="CERTIFICATES" [formControl]="createProfile.controls['certifications']" [(value)]="selectedCertifications" (ngModelChange)="addcertifications()" multiple>
+                              <mat-select-trigger>
+                                {{certificationsForm.value ? certificationsForm.value.provider_qualification_id : ''}}
+                                <span *ngIf="certificationsForm.value?.length > 1" class="example-additional-selection">
+                                  (+{{certificationsForm.value.length - 1}} {{certificationsForm.value?.length === 2 ? 'other' : 'others'}})
+                                </span>
+                              </mat-select-trigger>
+                              <mat-option *ngFor="let ceritfication of certifications" [value]="ceritfication">{{ceritfication.provider_qualification}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                          <div class="col-12 selectedCertications">
+                              <div *ngFor="let cert of selectedCertifications" class="selectedItem md-chip" [ngClass]="{'active': selectedItem == cert.provider_qualification_id}">
+                                <span>{{cert.provider_qualification}}</span>
+                                <button type="button" (click)="removeCertification(cert)" class="md-chip-remove"></button>
+                              </div>
+                          </div>
+                      </div>
+                   </div>
+                   <div *ngIf="showOtherCertification" class="col-lg-7 col-xl-6 col-12 modalWrapper">
+                        <!-- <div class="col-12 header"> -->
+                          <span class='close-btn' (click)="closeOtherCertification();">X</span>
+                        <!-- </div> -->
+                        <form #addNewCert="ngForm" class="certificateForm"[formGroup]="addNewCertProfile" (ngSubmit)="appendNewCertification(addNewCertProfile.value)">
+                          <div class="col-12 px-m-0 ">
+                            <div class="row">
+                              <div class="col-sm-12 col-md-4">
+                                  <mat-form-field class="title" floatLabel="always">
+                                    <input matInput [formControl]="addNewCertProfile.controls['provider_qualification']"  placeholder="COURSE NAME"/>
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-sm-12 col-md-4" >
+                                  <mat-form-field class="company" floatLabel="always">
+                                      <input matInput [formControl]="addNewCertProfile.controls['certification_source']"   placeholder="Course Provider"/>
+                                    </mat-form-field >
+                              </div>
+                              <div class="col-sm-12 col-md-4">
+                                  <mat-form-field class="company" floatLabel="always">
+                                    <input matInput [formControl]="addNewCertProfile.controls['course_year']" [matDatepicker]="picker2" placeholder="COURSE YEAR">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2 md-mode="year" startView="year"></mat-datepicker>
+                                  </mat-form-field>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-12 d-flex col-12 d-flex justify-content-between justify-content-md-end">
+                                  <button type="submit" class= "btn-primay-invert d-none" >+ ADD MORE</button>
+                                  <button type="submit" class= "btn-primay" >SAVE</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                </div>
+              </div>
+              <div class="row expWrapper mt-4" [hidden]="mobile && !expWrapperFlag">
+                <div class="col-12 nopadding">
+                  <div class="row">
+                    <div class="col-lg-7 col-xl-9 col-12 labelWrapper">
+                      <div class="col-12 boldLabel nopadding">Your experience</div>
+                      <div class="col-12 infoLabel nopadding">Let us know where you are working currently and your past experiences for our suers to know more about you</div>
+                    </div>
+                    <div class="col-lg-5 col-xl-3 col-12 linkedinBtn">+ CONNECT WITH LINKEDIN</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row personalDetailsWrapper" [hidden]="mobile && !expWrapperFlag">
+                <div class="col-xl-8 col-lg-6 col-md-12 col-12 nopadding">
+                    <div class="col-12 nopadding">
+                        <div *ngFor="let exp of expertises" class="selectedItem md-chip">
+                          <span>{{exp.title}} | {{exp.title}} | {{exp.from_date}} | {{exp.to_date}} | {{exp.region_id}}</span>
+                          <button type="button" (click)="removeExpertises(exp)" class="md-chip-remove"></button>
+                        </div>
+                    </div>
+                    <div class="col-12 text-md-center">
+                      <div *ngIf="!toggleExperienceCard" (click)="addExperienceButton()" class="addExperinceButton">{{addExperienceText}}</div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-7 col-12">
+                  <form #createExp="ngForm" [formGroup]="addNewExpertise" (ngSubmit)="saveExperience(addNewExpertise)">
+                    <div *ngIf="toggleExperienceCard" class="col-12 modalWrapper">
+                        <div class="col-12 header">
+                          <span class='floatRight' (click)="closeExperience()">X</span>
+                        </div>
+                        <div class="row addPadding">
+                          <div class="col-md-6 col-12">
+                              <mat-form-field class="title" floatLabel="always">
+                                <input matInput [formControl]="addNewExpertise.controls['desigination']"  placeholder="DESIGNATION"/>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6 col-12">
+                              <mat-form-field class="company" floatLabel="always">
+                                  <input matInput [formControl]="addNewExpertise.controls['companyName']"   placeholder="COMPANY NAME"/>
+                                </mat-form-field >
+                          </div>
+                        </div>
+                        <div class="row addPadding">
+                          <div class="col-12">
+                             <div class="row">
+                                <mat-form-field class="col-6 nopadding From" floatLabel="always">
+                                    <input matInput [formControl]="addNewExpertise.controls['fromDate']" [matDatepicker]="picker" placeholder="FROM">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker md-mode="year" startView="year"></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field class="col-6 to" floatLabel="always">
+                                    <input matInput [formControl]="addNewExpertise.controls['toDate']" [matDatepicker]="picker1" placeholder="TO">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1 md-mode="year" startView="year"></mat-datepicker>
+                                </mat-form-field>
+                                <small class="col-12 errdate" *ngIf="addNewExpertise.hasError('notValid')">TO date should be higher than FROM date</small>
+                              </div>
+                          </div>
+                          <div class="col-md-4 col-0"></div>
+                        </div>
+                        <div class="row addPadding">
+                          <div class="col-md-6 col-12">
+                              <mat-form-field floatLabel="always">
+                                <mat-select class="col-12 custom" placeholder="REGION" [formControl]="addNewExpertise.controls['region']">
+                                  <mat-option *ngFor="let region of regions" [value]="region">{{region.region}} </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6 col-12">
+                              <mat-form-field class="Website" floatLabel="always">
+                                  <input matInput [formControl]="addNewExpertise.controls['coWebsite']"   placeholder="COMPANY WEBSITE"/>
+                                </mat-form-field>
+
+                          </div>
+                        </div>
+                        <div class="col-12">
+                            <mat-checkbox class="workRadioBtn ml-md-2" [formControl] =  "addNewExpertise.controls['currentCompany']">I currently work here</mat-checkbox>
+                        </div>
+                        <div class="row addPadding">
+                          <div class="col-12">
+                              <input type="submit" class= "btn-primay" value="SAVE">
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                <div class="inputArea">
+                </div>
+              </div>
+              <div class="row">
+              <div class="col-12 d-lg-none sliderContainer ">
+              <div class="row no-gutters d-flex justify-content-center">
+                  <div class="col-3 nopadding">
+                      <div class = "carouselState" [class]="aboutyouWrapperState"></div>
+                  </div>
+                  <div class="col-3 nopadding">
+                      <div class = "carouselState" [class]="certificateWrapperState"></div>
+                  </div>
+                  <div class="col-3 nopadding">
+                      <div class = "carouselState" [class]="expWrapperState"></div>
+                  </div>
+                </div>
+                <div class="error col-12 text-center" *ngIf="isError">Plz.. fill all Mandatory fields.</div>
+              </div>
+              <div class="col-12">
+
+                <div class="mobileNext" [class.disabled]="mobileNextstatus" [hidden]="showMobileNext" (click)="mobileNext()" ><img src="./assets/right-arrow.png" alt=""></div>
+              </div>
+              </div>
+              <!-- <div *ngIf="inputFieldStatus">
+                <span class="error">Plase fill all mandatory fields.</span>
+              </div> -->
+              <div class="error" *ngIf="createPro.submitted&&!createPro.valid">
+                <span>Please fill all mandatory fields.</span>
+             </div>
+              <div class="navigationWrapper" [hidden]="!showMobileNext">
+
+                    <button class="btn nav-btn-submit"  type="submit">Go Ahead</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showOverlay" class='overlay'>
+          <p class='overlay-text'>
+            We are saving your certifications and expertises
+          </p>
+      </div>
+    </div>
+  </div>

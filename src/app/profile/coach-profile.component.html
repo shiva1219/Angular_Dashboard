@@ -1,0 +1,412 @@
+<div class="koola-coachProfile">
+	<div class="row">
+		
+		<div class="serviceWrapper col-sm-12">
+		   
+			<div class="serviceView-1" *ngIf="serviceFlag_1">
+				<div class="createOrg">Create your organisation</div>
+				<div class="wishTxt">Hi, <Span>coach</Span>! Let’s get started by registering your organisation</div>
+				<div class="addOrg">What's the Organisation Name?</div>
+				<form #createOrg="ngForm"  [formGroup]="createOrganisation" (ngSubmit)="submitOrgansation(createOrganisation)">
+					<mat-form-field >
+						<input matInput [formControl]="createOrganisation.controls['orgName']" placeholder="Organisation name"/>
+					</mat-form-field>
+					<div class="addOrg">Tell us whare it is?</div>
+					<div class="locationWrapper">
+						<mat-form-field class="inputField">
+							<input matInput [formControl]="createOrganisation.controls['address1']" placeholder="ADDRESS1"/>
+						</mat-form-field>
+						<mat-form-field class="inputField">
+							<input matInput [formControl]="createOrganisation.controls['address2']"   placeholder="ADDRESS2"/>
+						</mat-form-field>
+						<mat-form-field class="inputField">
+							<input matInput [formControl]="createOrganisation.controls['subUrb']"  placeholder="SUBURB"/>
+						</mat-form-field>
+						<mat-form-field class="inputField">
+							<input matInput type="number" [formControl]="createOrganisation.controls['postCode']"  placeholder="PASCODE"/>
+						</mat-form-field>
+						<mat-form-field class="inputField">
+							<input matInput [formControl]="createOrganisation.controls['state']"  placeholder="STATE"/>
+						</mat-form-field>
+						<mat-form-field class="inputField">
+							<input matInput [formControl]="createOrganisation.controls['country']"  placeholder="COUNTRY"/>
+						</mat-form-field>	
+					</div>
+					<div class="addOrg">It's Email ID, Website and Bank details?</div>
+					<div class="locationWrapper">
+							<mat-form-field  class="inputField">
+								<input matInput [formControl]="createOrganisation.controls['orgEmail']"  placeholder="Organisation Eamil"/>
+							</mat-form-field>
+							<mat-form-field class="inputField">
+								<input matInput [formControl]="createOrganisation.controls['orgWebsite']" placeholder="Organisation Website"/>
+							</mat-form-field>
+							<mat-form-field class="inputField">
+								<input matInput [formControl]="createOrganisation.controls['branchName']"  placeholder="Bank BRANCH"/>
+							</mat-form-field>
+							<mat-form-field class="inputField">
+								<input matInput type="number" [formControl]="createOrganisation.controls['bankAcc']"   placeholder="BANK ACCOUNT NUMBER"/>
+							</mat-form-field>
+						
+					</div>
+					<input id="createOrg" type = "submit" value = "submit" style="display: none">
+			    </form>
+			</div>	
+				
+			<div class="serviceView-2 " *ngIf="serviceFlag_2">
+				<div class="createOrg">Waht are the offerings that you  provide?</div>
+				<div class="wishTxt">Chosse a sport or activity.</div>
+				<div class="createOrg-sportWrapper">
+					<div class="labelWrapper">
+						<div class="boldLabel">Activity Name</div>
+						<!-- <div class="infoLabel">Add sports for this specific group</div> -->
+					</div>
+					<ng-select class="custom"
+				        [items]="sports"
+						[multiple]="true"
+						bindLabel="opportunity"
+                   		bindValue="opportunity_id"
+				        [closeOnSelect]="true"
+				        appendTo="body"
+				        placeholder="Select sports"
+						hideSelected = "true"
+						maxSelectedItems= 5
+						[(ngModel)]="selectedActivity"
+						(remove)="removeItem($event)"
+						(add)="addItem($event)">
+						<ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+							<div class="ng-value" *ngFor="let item of (items ? items.slice(0,2): [])">
+								<span class="ng-value-label">{{item.opportunity}}</span>
+								<span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+							</div>
+							<div class="ng-value" *ngIf="items.length > 2" >
+								<span class="ng-value-label">{{items.length - 2}} more...</span>
+							</div>
+						</ng-template>
+					</ng-select>	
+				</div>
+
+
+				<mat-accordion *ngIf="offeringsFalg1">
+					<form #createOff="ngForm" [formGroup]="createOffering" (ngSubmit)="submitOffering(createOffering)">
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+						<mat-panel-title>{{selectedActivityName1}}</mat-panel-title>
+						</mat-expansion-panel-header>
+					    
+						<div class="createOrg-locationWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Pincode</div>
+									<!-- <div class="infoLabel">Add locations for this specific group</div> -->
+								</div>
+								<ng-select class="custom"
+									[items]="pincode"
+									[multiple]="true"
+									bindLabel="pincode"
+									bindValue="pincode"
+									[closeOnSelect]="true"
+									appendTo="body"
+									[formControl]="createOffering.controls['pincode']"
+									placeholder="Select pincode"
+									hideSelected = "true">
+			
+								</ng-select>	
+						</div>
+						<div class="createOrg-rangeWrapper">
+							<div class="labelWrapper">
+								<div class="boldLabel">Range</div>
+								<!-- <div class="infoLabel">Add a range for which you will coach</div> -->
+							</div>
+							<!-- <mat-slider thumbLabel    tickInterval="1"  min="1"  max="100"></mat-slider> -->
+							<nouislider class = "nouislider" [formControl]="createOffering.controls['someRange']" [connect]="true" [min]="0" [max]="15" [step]="1"   [tooltips]="[ true, true ]" style="margin-top: 0em;" (change)="onChangeRangeSlider($event)"></nouislider>
+							<div class="rangeUnits">KM</div>
+							<!-- <div class="addLocBtn">+ ADD LOCATION</div> -->
+							<div class="genderWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Gender</div>
+									<!-- <div class="infoLabel">specify the gender for this group</div> -->
+								</div>
+								<label>
+									<input type="radio" [formControl]="createOffering.controls['gender']" name="gender" value="F" />
+									<img class="genderIcon" src="../assets/smiling-girl.png">
+								</label>
+								<label>
+									<input type="radio" [formControl]="createOffering.controls['gender']" name="gender" value="M" />
+									<img class="genderIcon" src="../assets/boy-broad-smile.png">
+								</label>
+								
+							</div>		
+							
+						</div>
+						<div class="createOrg-floorWrapper">
+							<div class="labelWrapper">
+								<div class="boldLabel">Flooring</div>
+								<!-- <div class="infoLabel">specify the type of flooring</div> -->
+							</div>
+							<div class="floorSelection">
+									<mat-radio-group [formControl]="createOffering.controls['surfaces']">
+											<!-- <mat-checkbox [checked] ="surface.surface_type_id" (change)="onselectSurfaces($event,surface)" [checked]  [formControl]="createOffering.controls['surfaces']" *ngFor="let surface of floorSurfaces" value="surface.surface_type_id">{{surface.surface_type}}</mat-checkbox> -->
+											<mat-radio-button  *ngFor="let surface of floorSurfaces"   [value]="surface.surface_quality_id">{{surface.surface_quality}}</mat-radio-button>		
+										  </mat-radio-group>
+							
+							</div>
+						</div>
+						<div class="createOrg-ageWrapper">
+							<div class="labelWrapper">
+								<div class="boldLabel">Age</div>
+								<!-- <div class="infoLabel">specify age for this group</div> -->
+							</div>
+							<div class="ageSelection">
+								
+									<mat-checkbox [checked] ="ageGroup.target_age_group_id" (change)="onselectAgeGroups($event,ageGroup)" *ngFor="let ageGroup of ageGroups" [checked] [formControl]="createOffering.controls['ageGroup']" value="ageGroup.target_age_group_id">{{ageGroup.target_age_group}}</mat-checkbox>
+								
+								<!-- </mat-radio-group> -->
+						
+							</div>
+						</div>
+						<div class="createOrg-typeWrapper">
+							<div class="labelWrapper">
+								<div class="boldLabel">Type</div>
+								<!-- <div class="infoLabel">Add type of trainining for this specific group</div> -->
+							</div>
+							<ng-select class="custom"
+								[items]="expertises"
+								[multiple]="true"
+								bindLabel="consumer_expertise"
+								bindValue="consumer_expertise_id"
+								[closeOnSelect]="true"
+								appendTo="body"
+								[formControl]="createOffering.controls['expertise']"
+								placeholder="Select type"
+								hideSelected = "true">
+		
+							</ng-select>
+							<!-- <div class="labelWrapper">
+								<div class="boldLabel">Cost</div>
+								<div class="infoLabel">Add cost for each session</div>
+							</div>	 -->
+						
+						</div>
+						
+					</mat-expansion-panel>	
+					<input type="submit" value="submit" style="display:none">
+					</form>
+				</mat-accordion>
+				<mat-accordion *ngIf="offeringsFalg2">
+						<mat-expansion-panel>
+							<mat-expansion-panel-header>
+							<mat-panel-title>{{selectedActivityName2}}</mat-panel-title>
+							</mat-expansion-panel-header>
+							
+							<div class="createOrg-locationWrapper">
+									<div class="labelWrapper">
+										<div class="boldLabel">Pincode</div>
+										<!-- <div class="infoLabel">Add locations for this specific group</div> -->
+									</div>
+									<ng-select class="custom"
+										[items]="pincode"
+										[multiple]="true"
+										bindLabel="pincode"
+										   bindValue="pincode"
+										[closeOnSelect]="true"
+										appendTo="body"
+										placeholder="Select pincode"
+										hideSelected = "true">
+				
+									</ng-select>	
+							</div>
+							<div class="createOrg-rangeWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Range</div>
+									<!-- <div class="infoLabel">Add a range for which you will coach</div> -->
+								</div>
+								<!-- <mat-slider thumbLabel    tickInterval="1"  min="1"  max="100"></mat-slider> -->
+								<nouislider class = "nouislider" [connect]="true" [(ngModel)]="someRange"  [min]="0" [max]="15" [step]="1" [tooltips]="[ true, true ]" style="margin-top: 0em;" (ngModelChange)="onChangeRangeSlider($event)"></nouislider>
+								<div class="rangeUnits">KM</div>
+								<!-- <div class="addLocBtn">+ ADD LOCATION</div> -->
+								<div class="genderWrapper">
+									<div class="labelWrapper">
+										<div class="boldLabel">Gender</div>
+										<!-- <div class="infoLabel">specify the gender for this group</div> -->
+									</div>
+									<label>
+										<input type="radio" name="gender" value="F" />
+										<img class="genderIcon" src="../assets/smiling-girl.png">
+									</label>
+									<label>
+										<input type="radio" name="gender" value="M" />
+										<img class="genderIcon" src="../assets/boy-broad-smile.png">
+									</label>
+								</div>		
+								
+							</div>
+							<div class="createOrg-floorWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Flooring</div>
+									<!-- <div class="infoLabel">specify the type of flooring</div> -->
+								</div>
+								<div class="floorSelection">
+									<!-- <mat-checkbox class="float-left">Grass</mat-checkbox>
+									<mat-checkbox class="float-left">Mud</mat-checkbox>
+									<mat-checkbox class="float-left">Synthetic</mat-checkbox> -->
+									<mat-radio-group> 
+						
+										<mat-radio-button  *ngFor="let surface of floorSurfaces" value="surface.surface_type_Id">{{surface.surface_type}}</mat-radio-button>
+									
+									</mat-radio-group>
+								</div>
+							</div>
+							<div class="createOrg-ageWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Age</div>
+									<!-- <div class="infoLabel">specify age for this group</div> -->
+								</div>
+								<div class="ageSelection">
+								
+										<mat-checkbox *ngFor="let ageGroup of ageGroups" value="ageGroup.target_age_group_id">{{ageGroup.target_age_group}}</mat-checkbox>
+									
+									<!-- </mat-radio-group> -->
+									
+								</div>
+							</div>
+							<div class="createOrg-typeWrapper">
+								<div class="labelWrapper">
+									<div class="boldLabel">Type</div>
+									<!-- <div class="infoLabel">Add type of trainining for this specific group</div> -->
+								</div>
+								<ng-select class="custom"
+									[items]="type"
+									[multiple]="true"
+									[closeOnSelect]="true"
+									appendTo="body"
+									placeholder="Select type"
+									hideSelected = "true">
+			
+								</ng-select>
+								<div class="labelWrapper">
+									<div class="boldLabel">Cost</div>
+									<!-- <div class="infoLabel">Add cost for each session</div> -->
+								</div>	
+								<input type="" name="" style="display:none">
+							</div>
+							
+						</mat-expansion-panel>	
+					</mat-accordion>
+							
+			</div>
+
+			<div class="serviceView-3 " *ngIf="serviceFlag_3">
+				<form #createPro="ngForm" [formGroup]="createProfile" (ngSubmit)="submitProfile(createProfile)">
+					<div class="createOrg">A little about you!</div>
+					<div class="textareaWrapper">
+						<textarea [formControl]="createProfile.controls['description']"></textarea>
+						<div class="label">A small description</div>
+					</div>
+					<div class="createOrg-certificateWrapper">
+						<div class="labelWrapper">
+							<div class="boldLabel">Your certifications</div>
+							<!-- <div class="infoLabel">Add a list of your certificates</div> -->
+						</div>
+						<ng-select class="custom"
+							[items]="certifications"
+							[multiple]="true"
+							[closeOnSelect]="true"
+							appendTo="body"
+							[formControl]="createProfile.controls['certifications']"
+							bindLabel="provider_qualification"
+							bindValue="provider_qualification_id"
+							(add)="addcertifications($event)"
+							placeholder="Select certifications"
+							hideSelected = "true">
+
+						</ng-select>	
+					</div>
+					<div class="expWrapper">
+						<div class="labelWrapper">
+							<div class="boldLabel">Your experience</div>
+							<!-- <div class="infoLabel">Add detals about your experience</div> -->
+						</div>
+						<div class="linkedinBtn">+ CONNECT WITH LINKEDIN</div>
+					</div>
+					<div class="personalDetailsWrapper">
+						<div class="inputArea">
+							
+							<mat-form-field class="title">
+								<input matInput [formControl]="createProfile.controls['desigination']"  placeholder="DESIGNATION"/>
+							</mat-form-field>
+							
+							<mat-form-field class="From">
+								<!-- <input matInput [formControl]="createProfile.controls['fromDate']"   placeholder="From"/> -->
+								<input matInput [formControl]="createProfile.controls['fromDate']" [matDatepicker]="picker" placeholder="Choose a date">
+  									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  									<mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+							</mat-form-field>
+							<mat-form-field class="to">
+								<!-- <input matInput [formControl]="createProfile.controls['toDate']"  placeholder="To"/> -->
+								<input matInput [formControl]="createProfile.controls['toDate']" [matDatepicker]="picker1" placeholder="Choose a date">
+  									<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  									<mat-datepicker #picker1 startView="year" [startAt]="startDate"></mat-datepicker>
+							</mat-form-field>
+							<mat-form-field class="company">
+								<input matInput [formControl]="createProfile.controls['companyName']"   placeholder="COMPANY NAME"/>
+							</mat-form-field >
+							
+							<mat-form-field class="description">
+								<input type="text" placeholder="Select region" aria-label="Number" matInput [formControl]="createProfile.controls['region']" [matAutocomplete]="auto">
+								<!-- <mat-autocomplete #auto="matAutocomplete">
+								  <mat-option *ngFor="let option of regions" [value]="option.region_id">
+									{{option.region}}
+								  </mat-option>
+								</mat-autocomplete> -->
+							</mat-form-field>
+							<mat-form-field class="Website">
+								<input matInput [formControl]="createProfile.controls['coWebsite']"   placeholder="COMPANY WEBSITE"/>
+							</mat-form-field>
+							<mat-checkbox class="workRadioBtn" [formControl] =  "createProfile.controls['currentCompany']">I currently work here</mat-checkbox> 
+							
+							<input type="submit" value="submit" style="display:none">
+							<!-- <div class="mediaBtn">+ UPLOAD MEDIA</div> -->
+							
+						</div>
+						<div class="label">Personal details</div>
+					</div>
+				
+			    </form>
+			</div>
+
+			<div class="serviceView-4 " *ngIf="serviceFlag_4">
+				<img src="./assets/dancing.png" alt="" class="icon-dancing">
+				<div class="congratulations">Congratulations!</div>
+				<div class="publishMsg">You are a coach now.</div>
+				<button class="btn btn-submit" type="button" >CREATE YOUR FIRST SESSION</button>
+				<div class="inviteBtn">INVITE PEOPLE TO YOUR ORGANISATION</div>
+				<div class="publishMsg">Share it on social media:</div>
+				<div class="iconWrapper">
+		           <a href="#"> 
+		            <img src="./assets/SignUp/facebook-letter-logo.png" class="fb">
+		           </a>
+		            <a href="#"> 
+		            <img src="./assets/twitter.png" class="twitter">
+		           </a>
+		            <a href="#"> 
+		            <img src="./assets/mail.png" class="mail">
+		           </a>
+		           <a href="#"> 
+		            <img src="./assets/SignUp/search.png" class="g">
+		           </a>
+		        </div>
+		        <div class="homeIconWrapper">
+		           <a href="#"> 
+		            <img src="./assets/home.png" class="home">
+		           </a>
+		       </div>
+			</div>
+
+			<div class="navigationWrapper">
+				<button class="btn nav-btn-submit d-none" type="button" *ngIf="serviceFlag_4">SUBMIT</button>
+				<!-- <button class="btn nav-btn-submit" type="button" (click)="next()" *ngIf="serviceNextBtn" [disabled]="!nextButtonStatus.valid">NEXT</button> -->
+		        <button class="btn nav-btn-submit" type="button" (click)="next()" *ngIf="serviceNextBtn">NEXT</button>
+		        <!-- <div class="addOfferBtn" *ngIf="serviceFlag_2">+ ADD OFFERINGS</div> -->
+			</div>
+		</div>
+	</div>	
+</div>

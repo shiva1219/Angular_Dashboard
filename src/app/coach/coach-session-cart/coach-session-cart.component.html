@@ -1,0 +1,418 @@
+<div class="cart-container">
+  <div class="mb-3">
+    <h3 class="d-none d-sm-block" *ngIf="isRegisterPay">Items</h3>
+    <h3 class="d-none d-sm-block" *ngIf="isBillingAddress"> Checkout</h3>
+    <h3 class="d-block d-sm-none">Checkout</h3>
+    <!-- <h4 class="pb-3">Thanks for Registering :)</h4> -->
+    <form action="">
+      <div class="cart-strategy-content" *ngFor="let citems of cartItemsData">
+        <div class="row">
+          <div class="close cart-crossbtn-bg" *ngIf="isRegisterPay"></div>
+
+          <span class="cart-close-btn" (click)="deleteSessionCartDetails($event, citems.consumer_asset_id)">&times;</span>
+          <div class="d-flex col-12">
+            <div class="col-grow-1 cartImage-wrapper">
+              <div class="cart-strategy-img">
+                <img src="../assets/cart-football.jpeg" alt="">
+              </div>
+            </div>
+            <div class="col sports-schedule-wrapper px-1">
+              <div class="d-inline-flex cart-sports-schedule">
+                <div class="col-8 px-0">
+                  <div class="cart-strategy-timings">
+                    <h2>Foot Ball - Basic strategy</h2>
+                    <small>April 26, 2018 | 4:00 PM - 5:00 PM</small>
+                    <p>$120 per person</p>
+                  </div>
+                  <hr class="my-0">
+                  <div class="cart-strategy-location d-flex">
+                    <img class="d-block" src="../assets/map-locator.svg" alt="">
+                    <p class="d-block mb-0">MMC Football grounds, Muthuswamy Rd, Park Town, Chennai,Tamil Nadu 600003</p>
+                  </div>
+                </div>
+                <div class="col-4 col-grow-1 cart-person-addon mt-2" *ngIf="isParticipants">
+                  <h6 class="px-1">Choose who will be attending</h6>
+                  <div class="addon form-group">
+                    <mat-form-field class="d-inline" panelClass="addon-participants">
+                      <mat-select placeholder="Friends">
+                        <mat-option [value]="">Family</mat-option>
+                        <mat-option [value]="">Relatives</mat-option>
+                        <mat-option [value]="">collegues</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="d-inline addon-participants">
+                      <mat-select placeholder="Rohit">
+                        <mat-option [value]="">1</mat-option>
+                        <mat-option [value]="">2</mat-option>
+                        <mat-option [value]="">3</mat-option>
+                        <mat-option [value]="">4</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="cart-addon-images">
+                    <img src="../assets/search-img26x26.jpg" alt="image">
+                    <img src="../assets/search-img26x26.jpg" alt="image">
+                  </div>
+                </div>
+
+                <!-- Thankyou page -->
+                <!--End of Thankyou page -->
+              </div>
+            </div>
+            <div class="col-grow-1 cart-value-wrapper">
+              <div class="cart-value text-center">
+                <p class="mb-0">$240</p>
+                <small>for 2</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For web version -->
+      <div class="cart-btns-wrapper d-none d-sm-block" *ngIf="isRegisterPay">
+        <div class="col-5 offset-md-7 text-right">
+          <hr>
+          <p class="d-inline-block">Register and pay with <span class="font-weight-bold">Money</span> </p>
+          <button type="button" class="btn cart-submit-btn" (click)="showBillingAddress($event);">SUBMIT</button><br>
+          <button type="button" class="btn cart-back-btn float-right">BACK</button>
+        </div>
+      </div>
+      <!-- End of web version -->
+
+
+      <!-- For mobile version -->
+      <div class="col-12 d-block d-sm-none text-center">
+        <button type="button" class="btn cart-back-btn">BACK</button>
+        <button type="button" class="btn cart-checkout-pay-btn">PAY</button>
+      </div>
+      <!-- End of mobile version -->
+      <!-- <div class="row cart-btns-wrapper d-none d-sm-block">
+          <div class="col-5 offset-md-7 text-right">       
+            <button type="button" class="btn cart-back-btn">BACK</button>
+            <button type="button" class="btn cart-buynow-btn">BUY NOW</button>
+          </div>
+        </div> -->
+    </form>
+  </div>
+
+  <!-- End of  checkout row -->
+  <div class="row mr-0" *ngIf="isBillingAddress">
+    <div class="col-12 col-md-6">
+      <h3 class="mb-4">Billing Address</h3>
+      <form method="">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Your First Name" value="">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Your Last Name" value="">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Your Email" value="">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Your Number" value="">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Address" value="">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Landmark" value="">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <mat-select placeholder="Select State">
+                <mat-option [value]="">None</mat-option>
+                <mat-option [value]="1">1</mat-option>
+                <mat-option [value]="2">2</mat-option>
+                <mat-option [value]="3">3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <mat-select placeholder="Select Country">
+                <mat-option [value]="">None</mat-option>
+                <mat-option [value]="1">1</mat-option>
+                <mat-option [value]="2">2</mat-option>
+                <mat-option [value]="3">3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <mat-form-field class="mat-width">
+              <input matInput placeholder="Pincode" value="">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-6 save-address">
+            <button type="button" class="btn cart-save-btn">SAVE ADDRESS</button>
+          </div>
+        </div>
+
+        <div class="col-12 d-block d-sm-none text-center mb-3 pt-4">
+          <button type="button" class="btn cart-back-btn mr-3">BACK</button>
+          <button type="button" class="btn cart-next-btn">NEXT</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6">
+      <h3 class="mb-3 pl-4">Payment</h3>
+      <form method="">
+        <ul class="nav nav-pills" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active active-tab-btn" data-toggle="pill" href="#creditCard">Credit Card</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#debitCard">Debit Card</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#paytm">PayTM</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#paypal">PayPal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#directBank">Direct Bank</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#cashOnDelivery">Cash on delivery</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="creditCard" class="container tab-pane active tab-content-active-link"><br>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="Enter Your 16 digits" value="" maxLength="16">
+                  <!-- <img src="../assets/masterc4ard.png" alt=""> -->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="Enter Name on Your Card" value="">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="expiry-date" class="col-6 col-sm-2 col-form-label">Expiry Date</label>
+              <div class="col-6 col-sm-4">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="DD/MM" value="">
+                </mat-form-field>
+              </div>
+
+              <label for="cvv" class="col-6 col-sm-2 col-form-label cart-cvv">CVV
+                <img src="https://img.icons8.com/ios/50/000000/help.png">
+              </label>
+              <div class="col-6 col-sm-4">
+                <mat-form-field class="mat-width width-83">
+                  <input matInput placeholder="CVV" value="">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="debitCard" class="container tab-pane fade"><br>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="Enter Your 16 digits" value="">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="Enter Name on Your Card" value="">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="expiry-date" class="col-md-2 col-form-label">Expiry Date</label>
+              <div class="col-md-4">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="DD/MM" value="">
+                </mat-form-field>
+              </div>
+              <label for="cvv" class="col-md-2 col-form-label">CVV
+                <img src="https://img.icons8.com/ios/50/000000/help.png">
+              </label>
+              <div class="col-md-4">
+                <mat-form-field class="mat-width">
+                  <input matInput placeholder="CVV" value="">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 text-center pt-2">
+          <button type="button" class="btn cart-back-btn d-sm-none mr-3">BACK</button>
+          <button type="button" class="btn cart-pay-btn" (click)="showBillingPay($event);">PAY</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal section -->
+<div class="container d-none">
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="participant-summary-wrapper">
+            <div class="participant-summary">
+              <div class="participant-details d-inline-flex">
+                <div class="participant-img">
+                  <img src="../assets/search-img26x26.jpg" alt="participant-profile">
+                </div>
+                <div class="participant-rating">
+                  <h4>Sunil Kumar A</h4>
+                  <p>Mogappair,Chennai</p>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star semi-checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+              </div>
+              <hr>
+              <div class="participant-achievements">
+                <div class="row">
+                  <div class="col-12 sessions-block d-flex justify-content-between">
+                    <h4>Achievements</h4>
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination justify-content-end">
+                        <li class="page-item"><a class="page-link page-link-styling" href="">View all</a></li>
+                        <li class="page-item">
+                          <a class="page-link page-link-styling" href="" aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="d-flex flex-wrap justify-content-space mx-3">
+                      <div class="achievements-icons-wrapper">
+                        <div class="achievement-icon">
+                          <img src="../assets/baby.png" alt="rookie">
+                        </div>
+                        <div class="achievement-icon">
+                          <img src="../assets/promotion.png" alt="10k stairs">
+                        </div>
+                        <div class="achievement-icon">
+                          <img src="../assets/winner.png" alt="run with a partner">
+                        </div>
+                        <div class="achievement-icon">
+                          <img src="../assets/athletics.png" alt="10k run">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+            <div class="participant-previous-sessions">
+              <div class="row">
+                <div class="col-12 sessions-block d-flex justify-content-between">
+                  <h4>Previous sessions together</h4>
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                      <li class="page-item"><a class="page-link page-link-styling" href="">View all</a></li>
+                      <li class="page-item">
+                        <a class="page-link page-link-styling" href="" aria-label="Next">
+                          <span aria-hidden="true">&gt;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="d-flex flex-wrap justify-content-space mx-3">
+                    <div class="card-deck">
+                      <div class="card card-block">
+                        <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+                        <div class="card-body card-body-pl">
+                          <h6 class="card-title">BASKETBALL</h6>
+                          <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                        </div>
+                      </div>
+                      <div class="card card-block">
+                        <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+                        <div class="card-body card-body-pl">
+                          <h6 class="card-title">BASKETBALL</h6>
+                          <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                        </div>
+                      </div>
+                      <div class="card card-block">
+                        <img class="card-img-top" src="https://picsum.photos/280/210" alt="Card image">
+                        <div class="card-body card-body-pl">
+                          <h6 class="card-title">BASKETBALL</h6>
+                          <p class="card-text card-text-para">Dunk practice sessions for amaterus</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="complete-details">
+      <a href="">View Complete Details</a>
+    </div>
+  </div>
+</div>
+<!-- End of Modal section -->

@@ -1,0 +1,42 @@
+<div class="k-page-headline">
+  <div class="container">
+    <h1 *ngIf="step1">Let’s get you ready to coach.</h1>
+    <h1 *ngIf="step2">Hurray! Your second step. One more to go…</h1>
+    <h1 *ngIf="step3">You are in your last step..YAY!!!</h1>
+    <!-- <a href="">
+      <span>BACK</span>
+      
+    </a> -->
+  </div>
+</div>
+<div class="k-home-content">
+  <div class="container">
+    <div class="k-step-block" [ngClass]="{'active': step1}">
+      <div class="k-left">
+        <h3>Start with the basics</h3>
+        <p>We'll ask you about your organisation, location and its details.</p>
+      </div>
+      <div class="k-right">
+        <button class="btn btn-primay go-head-btn" type="button" (click)="goToProfile()">Go ahead</button>
+      </div>
+    </div>
+    <div class="k-step-block" [ngClass]="{'active': step2}">
+      <div class="k-left">
+        <h3>Set the scene</h3>
+        <p>Walk through writing about the offerings that you can provide as a coach.</p>
+      </div>
+      <div class="k-right">
+        <button class="btn btn-primay go-head-btn" type="button" (click)="goToActivities()">Go ahead</button>
+      </div>
+    </div>
+    <div class="k-step-block" [ngClass]="{'active': step3}">
+      <div class="k-left">
+        <h3>Get ready for students</h3>
+        <p>Get off on the right foot with some details about you, certifications and other details.</p>
+      </div>
+      <div class="k-right">
+        <button class="btn btn-primay go-head-btn" type="button" (click)="goToCreateSession()">Go ahead</button>
+      </div>
+    </div>
+  </div>
+</div>

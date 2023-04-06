@@ -1,0 +1,458 @@
+<div class="search-container">
+    <div class="search-dashboard">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-8 col-md-6 col-lg-8 d-flex p-2 dashboard-list">
+                    <!-- <div class="search-item-container">
+                        <div class="filter align-self-center pl-4">
+                            <div class="wrapper">
+                              <img alt="sorting-filter" src="../assets/filter-icon.png">
+                              <p>Filters</p>
+                            </div>
+                        </div>
+                      </div> -->
+                    <div class="filter align-self-center px-2">
+                        <img src="../assets/filter-icon.png" alt="sorting-filter">
+                        <p>Filters</p>
+                    </div>
+                    <!-- <div class="search-item-container">
+                          <div class="date-search">
+                              <div class="wrapper">
+                                <img alt="dates" src="../assets/dates-icon.png">
+                                <p>Dates</p>
+                              </div>
+                          </div>
+                        </div> -->
+                    <div class="date-search">
+                        <a href="#" (click)="ModalDate.show();isCollapsed = !isCollapsed">
+                            <img src="../assets/dates-icon.png" alt="dates">
+                            <p>Dates</p>
+                        </a>
+                    </div>
+                    <!-- <div class="search-item-container">
+                          <div class="price-search">
+                              <div class="wrapper">
+                                <img alt="prices" src="../assets/cash-in-hand.png">
+                                <p>Prices</p>
+                              </div>
+                          </div>
+                        </div> -->
+                    <div class="price-search">
+                        <img src="../assets/cash-in-hand.png" alt="prices">
+                        <p>Prices</p>
+                    </div>
+                    <div class="search-item-container">
+                        <div class="search-amenities-parking">
+                            <div class="wrapper">
+                                <img alt="parking-lot" src="../assets/parking.png">
+                                <p>car parking</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="search-item-wrapper">
+                        <div class="search-amenities-parking">
+                            <img src="../assets/parking.png" alt="parking-lot">
+                            <p>car parking</p>
+                        </div>
+                      </div> -->
+                    <div class="search-item-container">
+                        <div class="search-amenities-water">
+                            <div class="wrapper">
+                                <img alt="water-bottle" src="../assets/water.svg">
+                                <p>water bottles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="search-amenities-water">
+                        <img src="../assets/water.svg" alt="water-bottle">
+                        <p>water bottles</p>
+                      </div> -->
+                    <div class="search-item-container">
+                        <div class="search-amenities-jerseys">
+                            <div class="wrapper">
+                                <img alt="jersey" src="../assets/basketball-jersey.png">
+                                <p>jerseys</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="search-amenities-jerseys"> <img src="../assets/basketball-jersey.png" alt="jersey">
+                        <p>jerseys</p></div> -->
+                    <div class="amenities-adding px-2">+</div>
+                </div>
+                <div class="col-4 col-md-6 col-lg-4"></div>
+
+                <!-- <div class="col-lg-10 d-flex">
+                    <nouislider class="nouislider"  [min]="0" [max]="15"
+                      [step]="1" [tooltips]="[ true, true ]" style="margin-top: 0em;"></nouislider>
+                    <span class="rangeUnits">KM</span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="search-results container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-inline custom-list d-inline">
+                    <li class="list-inline-item active-link"><a href="">All</a></li>
+                    <li class="list-inline-item"><a href="">Registered</a></li>
+                    <li class="list-inline-item"><a href="">Past</a></li>
+                </ul>
+                <ul class="list-inline custom-list d-inline-flex float-right pt-2">
+                    <li class="list-inline-item"><a href="" class="btn btn-sm search-addevent-btn mr-4">Add an event +</a><img
+                            src="../assets/bulleted-list.png" alt=""></li>
+                    <li class="list-inline-item"><img src="../assets/squares.png" alt=""><a href="" class="ml-4">View
+                            all &gt;</a></li>
+                </ul>
+            </div>
+            <!-- <input type="text" class="form-control thumbnail-search" placeholder="Search.." (keyup)="onSearchSessions($event.target.value)"> -->
+            <div class="row">
+                <div class="col-12 d-flex flex-wrap justify-content-around">
+                    <div class="search-item col-sm-6 col-md-4 col-lg-3" *ngFor="let session of sessionData">
+                        <div class="searchItem-container">
+                            <div class="search-card-wrapper">
+                                <h4 class="search-card-title">{{session.base_offering}}</h4>
+                                <div class="search-card img-fluid">
+                                    <img class="card-img-top" src="{{baseUrl}}/assets/coach/photos/{{session.image[0].image_url}}"
+                                        alt="Card image">
+                                    <div class="search-img-overlay"></div>
+                                    <div class="text-img-overlay">
+                                        <p class="search-card-text">{{session.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="schedule-and-amenities">
+                                <div class="user-timings-and-cost">
+                                    <p class="scheduletiming mb-0">{{session.session_start_time_zone}}</p>
+                                    <small class="scheduledate">{{session.days[0].start_date}}</small>
+                                    <p class="cost-per-person mt-2 mb-0">$ {{session.price}} /<span class="per-person-img"><img
+                                                src="../assets/avatar20x20.png"></span></p>
+                                </div>
+                                <div class="search-icons-wrapper d-flex flex-wrap mt-2">
+                                    <div class="search-icon">
+                                        <div class="search-user-icon">
+                                            <img src="../assets/search-img26x26.jpg" alt="user">
+                                        </div>
+                                    </div>
+                                    <div class="search-icon" *ngFor="let ame of session.amenity">
+                                        <div class="search-amenities-parking">
+                                            <img src="{{baseUrl}}/assets/parking.png" alt="parking-lot">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="searchbtns col-12 text-center">
+
+                                <div *ngIf="isShowLogin; then showSessionDetails else hideSessionDetails "></div>
+                                <ng-template #showSessionDetails>
+                                    <button class="btn search-more-btn" (click)="viewSessionCartPage($event,session.opportunity_instance_id)">MORE</button>
+                                    <button class="btn search-register-btn" (click)="viewSessionCartPage($event,session.opportunity_instance_id)">REGISTER
+                                        TO EVENT</button>
+                                </ng-template>
+                                <ng-template #hideSessionDetails>
+
+                                    <a href="#" class="btn search-more-btn" (click)="viewSessionCartPage($event,session.opportunity_instance_id)">MORE</a>
+                                    <a class="btn search-register-btn" href="#" (click)="ModalSignIn.show();isCollapsed = !isCollapsed">REGISTER
+                                        TO EVENT</a>
+                                    <!-- <a href="" class="btn search-register-btn" (click)="viewSessionCartPage($event,session.opportunity_instance_id)">REGISTER
+                                        TO EVENT</a> -->
+                                </ng-template>
+
+                                <!-- <a class="nav-link" href="#" (click)="ModalTesting.show();isCollapsed = !isCollapsed">REGISTER</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="map">
+            <p> MAP<i></i></p>
+        </div>
+        <div id="bgimagewrapper">
+            <img src="../assets/ahmedabad_001.png" alt="" class="bgimages">
+            <img src="../assets/mumbai_001.png" alt="" class="bgimages">
+            <img src="../assets/patna_001.png" alt="" class="bgimages">
+            <img src="../assets/pune_001.png" alt="" class="bgimages">
+            <img src="../assets/surat_001.png" alt="" class="bgimages">
+            <img src="../assets/thane_001.png" alt="" class="bgimages">
+            <img src="../assets/visakhapatnam_001.png" alt="" class="bgimages">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade koolaSignIn" bsModal #ModalSignIn="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignIn.hide();reserErrorMessages();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="SignInForm" (ngSubmit)="submitSignInForm(SignInForm)" validate>
+                    <div class="errorMessage">
+                        <mat-error *ngIf="error">
+                            <ul>
+                                <li *ngFor="let errors of errorMessages">
+                                    <strong>{{errors}}</strong>
+                                </li>
+                            </ul>
+                        </mat-error>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" [(ngModel)]="email" [formControl]="SignInForm.controls['email']"
+                            [errorStateMatcher]="matcher" />
+                        <mat-error *ngIf="SignInForm.controls['email']">
+                            User email is <strong>required</strong>
+
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Password" [(ngModel)]="password" [formControl]="SignInForm.controls['password']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignInForm.controls['password']">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="chekboxwrapper">
+                        <mat-checkbox class="float-left" [ngModel]="rememberMe" [formControl]="SignInForm.controls['rememberMe']">Remember
+                            Me</mat-checkbox>
+                        <span class="float-right"><a href="#" (click)="ModalSignIn.hide();ModalForgotPassword.show();reserErrorMessages();">Forgot
+                                Password?</a></span>
+                    </div>
+                    <div class="row-popup">
+
+                        <!-- <button class="btn-singUp" [disabled]="!SignInForm.valid" (click) = "ModalSignIn.hide()" >SIGN IN</button> -->
+                        <button class=" btn btn-singUp" [disabled]="!SignInForm.valid" [ngClass]="{'btn-disable': !SignInForm.valid}">SIGN
+                            IN</button>
+                    </div>
+                </form>
+                <div class="orUsing">
+                    <span>Or using</span>
+                </div>
+                <div class="iconWrapper">
+                    <a href="#">
+                        <img src="./assets/SignUp/facebook-letter-logo.png" class="fb-signup">
+                    </a>
+                    <a href="#">
+                        <img src="./assets/SignUp/search.png" class="fb-signup">
+                    </a>
+                </div>
+                <div class="signUp">
+                    <span>Not a Memeber yet? <a href="#" (click)="ModalSignIn.hide() ; ModalSignUp.show();reserErrorMessages();">SignUp</a></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--koolaSignUpVerification  -->
+<div class="modal fade koolaSignUpVerification" bsModal #ModalSignUpVerification="bs-modal" [config]="{backdrop: 'static'}"
+    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignUpVerification.hide();reserErrorMessages();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="SignUpVerification" (ngSubmit)="submitSignUpVerification(SignUpVerification)">
+                    <div class="errorMessage">
+                        <mat-error *ngIf="error">
+                            <ul>
+                                <li *ngFor="let errors of errorMessages">
+                                    <strong>{{errors}}</strong></li>
+                            </ul>
+                        </mat-error>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Verification code" [formControl]="SignUpVerification.controls['code']"
+                            [errorStateMatcher]="matcher" />
+                        <mat-error *ngIf="SignUpVerification.controls['code']">
+                            Verification code is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Password" [formControl]="SignUpVerification.controls['password']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignUpVerification.controls['password']">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Confirm Password" [formControl]="SignUpVerification.controls['confirm']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignUpVerification.controls['confirm']">
+                            Password <strong>mismatch</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="row-popup">
+                        <button class="btn btn-singUp" [disabled]="!SignUpVerification.valid" [ngClass]="{'btn-disable': !SignUpVerification.valid}"
+                            (click)="ModalSignUpVerification.hide()">Submit</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--koolaSignUp  -->
+<div class="modal fade koolaSignUp" bsModal #ModalSignUp="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close pull-right" aria-label="Close" (click)="ModalSignUp.hide();reserErrorMessages();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="SignUpForm" (ngSubmit)="submitSignUpForm(SignUpForm)">
+                    <div class="errorMessage">
+                        <mat-error *ngIf="error">
+                            <ul>
+                                <li *ngFor="let errors of errorMessages">
+                                    <strong>{{errors}}</strong>
+                                </li>
+                            </ul>
+                        </mat-error>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" [formControl]="SignUpForm.controls['email']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignUpForm.hasError('email') && !SignUpForm.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="SignUpForm.controls['email']">
+                            Email is <strong>required</strong>
+                        </mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="First name" [formControl]="SignUpForm.controls['firstname']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignUpForm.controls['firstname']">
+                            firstname is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Last name" [formControl]="SignUpForm.controls['lastname']"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="SignUpForm.controls['lastname']">
+                            lastname is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- <mat-form-field>
+                    <input matInput type="password" placeholder="Password"
+                    [formControl]="SignUpForm.controls['password']" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="SignUpForm.controls['password']">
+                    Password is <strong>required</strong>
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                  <input  matInput
+                   placeholder="Date of birth"
+                   #dp="bsDatepicker"
+                   bsDatepicker
+                   [bsValue]="bsValue"
+                   [formControl]="SignUpForm.controls['date']" [errorStateMatcher]="matcher" >
+                   <mat-error *ngIf="SignUpForm.controls['date']">
+                      Date is <strong>required</strong>
+                   </mat-error>
+            </mat-form-field>    -->
+                    <div class="chekboxwrapper">
+                        <mat-checkbox class="mat-checkbox" [formControl]="SignUpForm.controls['marketingPolicy']"></mat-checkbox>
+                        <p>I would like to receive marketing & policy
+                            communcation from Primitive and its partners.</p>
+                        <mat-checkbox class="mat-checkbox" [formControl]="SignUpForm.controls['terms']" [checked]="true">
+                            I agree to <a href="#" class="koola-agree">Primitive terms & sevice, community commitment
+                                and other.</a>
+                        </mat-checkbox>
+                    </div>
+                    <button class="btn btn-singUp" [disabled]="!SignUpForm.valid" [ngClass]="{'btn-disable': !SignUpForm.valid}">SIGN
+                        UP</button>
+                    <!-- <button class="btn-singUp"  (click) = "submitSignUpForm"  >SIGN UP</button> -->
+                </form>
+                <div class="orUsing">
+                    <span>Or using</span>
+                </div>
+                <div class="iconWrapper">
+                    <a href="#">
+                        <img src="./assets/SignUp/facebook-letter-logo.png" class="fb-signup">
+                    </a>
+                    <a href="#">
+                        <img src="./assets/SignUp/search.png" class="fb-signup">
+                    </a>
+                </div>
+                <div class="signUp">
+                    <span>Already a Memeber?
+                        <a href="#" (click)="ModalSignUp.hide(); ModalSignIn.show();reserErrorMessages();">SignIn</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade koolasignup" bsModal #ModalDate="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <label class="mx-auto">Search Filter</label>
+                <button type="button" class="close pull-right ml-0" aria-label="Close" (click)="ModalDate.hide();reserErrorMessages();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #createExp="ngForm" [formGroup]="filterSessionForm" class="text-center">
+
+                    <div class="d-flex">
+                        <mat-form-field class="col-6 nopadding From" floatLabel="always">
+                            <input matInput [formControl]="filterSessionForm.controls['fromDate']" [matDatepicker]="picker"
+                                placeholder="FROM">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker md-mode="year" startView="year"></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="col-6 to" floatLabel="always">
+                            <input matInput [formControl]="filterSessionForm.controls['toDate']" [matDatepicker]="picker1"
+                                placeholder="TO">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1 md-mode="year" startView="year"></mat-datepicker>
+                        </mat-form-field>
+                        <small class="alert alert-danger " *ngIf="filterSessionForm.hasError('notValid')">TO date
+                            should be
+                            higher than FROM date</small>
+                    </div>
+                    <div class="">
+                        <mat-button-toggle-group [value]="selectedVal" #group="matButtonToggleGroup" (change)="onValChange(group.value)">
+                            <mat-button-toggle [value]="true"> StartDate
+                            </mat-button-toggle>
+                            <mat-button-toggle [value]="false"> End Date </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                    <div>
+
+
+                        <!-- <mat-slide-toggle [(ngModel)]="isChecked">Slide Toggle Checked: {{isChecked}}</mat-slide-toggle> -->
+                    </div>
+                    <div class="modal-save-btn p-3">
+                        <button type="button" [disabled]="!filterSessionForm.valid" (click)="save()">SAVE</button>
+                        <button type="button" (click)="clearFilter()">CLEAR</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,517 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+
+@mixin placholderClass($size,$position){
+    color: #434343;
+    opacity: 0.1;
+    font-weight: 600;
+    font-size: $size;
+    text-align: $position;
+}
+
+  .search-row{
+    /* margin: 1% 23% 0.3% 23%; */
+    width: 40%;
+    min-height: 40px;
+    position: absolute;
+    /* top: 28%; */
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    @include border-radius(45px);
+
+    .autoComplte{
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+    div{
+      min-height: 40px;
+    }
+    .form-control{
+        border: 0;
+        min-height: 40px;
+    }
+    ::-webkit-input-placeholder { /* Chrome */
+        @include placholderClass(14px,left);
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+        @include placholderClass(20px,left);
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        @include placholderClass(20px,left);
+    }
+    :-moz-placeholder { /* Firefox 4 - 18 */
+        @include placholderClass(20px,left);
+    }
+    .btnWrapper{
+      .microphone{
+        height: 18px;
+        position: absolute;
+        left: 13%;
+        top: 24%;
+      }
+      .btn-search{
+        background-color: #FFCE00;
+        width: 68%;
+        position: absolute;
+        @include border-radius(45px);
+        min-height: 33px;
+        margin: 3px 0px;
+        font-weight: 600;
+        font-size: 13px;
+        right: 2%;
+      }
+
+    }
+    
+  }
+
+.modal-body {
+    // max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+.navbar{
+    z-index: 1;
+    border-bottom: 5px solid #DEDEDE;
+}
+.noBorder{
+  border-bottom: 0;
+}
+.header{
+  position: relative;
+  // display: none;
+}
+.navbar-progress{
+  border-bottom: 5px solid #FFE200;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 0%;
+  transition: width 0.5s;
+}
+.navbar a {
+    color: #FFE200;
+    font-size: 2.1vmax;
+}
+.navbar-nav a.nav-link {
+    color: #000000;
+    font-size: 2.5vmin;
+    padding-right: 2.5vw;
+}
+.row-popup{
+    clear:both;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+.example-container > * {
+    width: 100%;
+}
+
+.profile-img{
+    height: 40px;
+    width:40px;
+    @include border-radius(20px);
+    border: 4px solid #FFCE00;
+    text-align: center;
+    line-height: 33px;
+}
+.profile-wrapper{
+    margin-left: 10px;
+        .profileMenu{
+            min-width:80px !important;
+            height: 668px;
+            left: -32px !important;
+            top: -6px !important;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+            border: solid 1px rgba(0,0,0,0.1);
+            @include border-radius(45px);
+            li{
+                width:80px !important;
+                a{
+                    font-size: 16px;
+                    color: #000000;
+                    padding: 2px;
+                }
+            }
+            .close{
+                position: absolute;
+                bottom: 18px;
+                left: 28px;
+                span{
+                    font-size: 34px;
+                    opacity: 0.5;
+                }
+            }
+            .profile-view{
+                height: 60px;
+                width: 60px;
+                @include border-radius(30px);
+                border: 4px solid #FFCE00;
+                margin-left: 10px;
+            }
+        }
+}
+
+
+.modal-content{
+    height: 600px;
+    width: 450px;
+    top:10px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    .mat-form-field{
+        display: block;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 20px;
+
+    }
+    .chekboxwrapper{
+        margin: 10px 20px;
+        color: #A5A5A5;
+        min-height: 50px;
+        a{
+            color: #A5A5A5;
+        }
+
+        .mat-checkbox-frame{
+            border-color: #95989A !important;
+        }
+    }
+    .mat-form-field{
+        color: #434343;
+        opacity: 0.3;
+        font-size: 18px;
+    }
+    .orUsing{
+        text-align: center;
+        color: #141414;
+        font-size: 16px;
+        height: 46px;
+        margin: 18px 0 0 0;
+    }
+    .btn-singUp{
+        color: #141414;
+        background-color: #FFCE00;
+        width: 30%;
+        @include border-radius(45px);
+        min-height: 40px;
+        margin: 1% 35%;
+        font-size: 16px;
+        border: none;
+    }
+    .btn-disable{
+        background-color:grey;
+    }
+    .iconWrapper{
+        height: 50px;
+        text-align: center;
+        a{
+            display: inline-block;
+            height: 100%;
+            width: 50px;
+           -webkit-box-shadow: 0px 1px 6px 2px rgba(0,0,0,0.16);
+            -moz-box-shadow: 0px 1px 6px 2px rgba(0,0,0,0.16);
+            box-shadow: 0px 1px 6px 2px rgba(0,0,0,0.16);
+            @include border-radius(45px);
+            margin: 0 10px;
+            padding: 10px;
+            img{
+                height: 72%;
+            }
+        }
+    }
+    .signUp{
+        text-align: center;
+        height: 50px;
+        padding-top: 30px;
+        a{
+            color: #FFCE00;
+            font-weight: 600;
+        }
+    }
+
+}
+.koolaSignUpVerification{
+    .modal-content{
+        height: 445px;
+    }
+}
+.checkbox-error {
+    color: red;
+    position: relative;
+    margin-top: 5px;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    &:before,
+    &::before {
+      position: absolute;
+      content: '';
+      width: 0;
+      opacity: 0;
+      height: 1px;
+      background-color: red;
+      top: -5px;
+    }
+
+    &.show {
+      height: auto;
+      opacity: 1;
+      margin-bottom: 1rem;
+      visibility: visible;
+
+      &:before,
+      &::before {
+        width: 100%;
+        opacity: 1;
+        transition: width 600ms ease-in-out, opacity 750ms linear;
+      }
+    }
+  }
+.koolaSignUp{
+
+    .modal-content{
+        height: 575px;
+        width: 475px;
+        top: 0px;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+        .modal-header{
+            padding: 16px 16px 0 16px;
+            border: 0;
+        }
+        .modal-body{
+            padding: 0;
+        }
+    }
+    .orUsing{
+        height: 35px;
+        margin: 12px 0 0 0;
+    }
+
+    .mat-form-field{
+        margin-bottom: 0;
+        font-size: 17px;
+    }
+    .chekboxwrapper{
+        margin: 0 22px 10px;
+        .koola-agree{
+            color: #FFCE00;
+        }
+        .mat-checkbox{
+            font-size: 13px;
+        }
+        p{
+            display: inline-block;
+            width: 93%;
+            position: relative;
+            top: 10px;
+            left: 4px;
+            font-size: 13px;
+        }
+    }
+    .btn-singUp{
+        margin: 0 35%;
+    }
+    .signUp{
+        padding-top: 12px;
+    }
+
+}
+.koolaForgotPassword{
+    color: #141414;
+    .modal-content{
+        height: 420px;
+    }
+    .pwdRestLabel{
+        margin: 0 0 5% 5%;
+        .headerLabel{
+            font-size: 22px;
+        }
+        .infoLabel{
+            font-size: 14px;
+        }
+    }
+    .btn-singUp{
+        width: 60%;
+        margin: 1% 20%;
+        font-size: 14px;
+    }
+}
+.koolaResetPassword{
+    .pwdRestLabel{
+        margin: 0 0 5% 5%;
+        .headerLabel{
+            font-size: 22px;
+        }
+    }
+}
+
+.fa-cart {
+    background-color: fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 70%;
+    box-shadow: 0 .125rem 0.5rem rgba(0,0,0,0.2)!important;
+    text-align: center;
+    padding-top: 12px;
+}
+
+@media screen  and (min-device-width: 1200px)  and (max-device-width: 1600px){
+	.navbar a {
+	    font-size: 1.9vmax;
+	}
+	.navbar-nav a.nav-link {
+	    font-size: 1vmax;
+	}
+}
+@media only screen and (max-width: 736px) {
+    .navbar{
+        position: relative;
+        border-bottom: 0px solid #DEDEDE !important;
+        .navbar-toggler{
+            position: absolute;
+            right: -46px;
+            top: 6px;
+        }
+        .collapse{
+            position: absolute;
+            display: none;
+            top: 50px;
+            width: 100%;
+            height: calc(100vh - 50px) !important;
+            overflow-y: auto;
+            background: #FFF;
+            left: 0;
+            transition: all 0.3s ease-in;
+            z-index: 501;
+            padding: 12px;
+            li{
+                display: inline-block;
+                margin-top: 1px;
+                padding-top: 14px;
+                padding-right: 27px;
+                padding-bottom: 10px;
+                height: 48px;
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid rgba(0,0,0,.1);
+                a{
+                    font-size: 14px;
+                }
+            }
+        }
+        .profile-wrapper{
+            position: absolute;
+            right: 65px;
+            top: 6px;
+            .profileMenu{
+                height: 98vh;
+                min-width: 70px !important;
+                left: -26px !important;
+                top: -7px !important;
+                li{
+                    width: 60px !important;
+                    a{
+                        font-size: 12px;
+                    }
+                } 
+                .close{
+                    left: 24px;
+                }
+            }
+        }
+    }
+    .navbar-progress{
+        display: none !important;
+    }
+    .koolaSignIn,.koolaSignUp{
+        .modal-content{
+            height: 94vh;
+            width: 98%;
+            .chekboxwrapper{
+                font-size: 12px;
+                margin: 4px 18px;
+                min-height: 20px;
+            }
+            .btn-singUp{
+                width: 32%;
+                min-height: 34px;
+                margin: 1% 34%;
+                font-size: 12px;
+            }
+            .orUsing{
+                font-size: 12px;
+                height: 28px;
+                margin: 11px 0 0 0;
+            }
+            .iconWrapper{
+                height: 40px;
+                a{
+                    width: 40px;
+                    padding: 6px;
+                }
+            }
+            .signUp{
+                padding-top: 22px;
+                font-size: 12px;
+            }
+            .mat-form-field{
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .koolaSignUp {
+        .chekboxwrapper {
+            .mat-checkbox{
+                font-size: 10px;
+            }
+            p{
+                font-size: 10px;
+                top: 5px;
+                width: 91%;
+            }
+        }
+    }
+    .koolaForgotPassword,.koolaSignUpVerification{
+        .modal-content{
+            min-height: 60vh;
+            width: 98%;
+            .btn-singUp{
+                width: 66%;
+                margin: 1% 17%;
+                font-size: 11px;
+            }
+        }
+    }
+    .koolaResetPassword{
+        .modal-content{
+            min-height: 80vh;
+            width: 98%;
+            .btn-singUp{
+                width: 66%;
+                margin: 1% 17%;
+                font-size: 11px;
+            }
+        }
+    }
+   
+
+}
+
+

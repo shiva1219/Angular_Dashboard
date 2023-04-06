@@ -1,0 +1,262 @@
+<div class="coach-activities">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="align-items-center d-none d-md-flex flex-row justify-content-between page-headline w-100">
+          <h1>Hurray! Your second step. One more to go…</h1>
+          <!-- <small class="back">BACK</small> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12  col-lg-3 py-md-4">
+
+        <div class="createOrg">What are the offerings that you provide?</div>
+        <div class="wishTxt">Choose a sport, activity or other. Type and press enter to add many to the list</div>
+
+        <div class="coach-by-spoart">
+          <div class="">
+            <label class="boldLabel activivity_name m-0" for="activity_name">Activity Name</label>
+            <mat-form-field class="d-block">
+              <mat-select placeholder="" [(ngModel)]="selectedSports"   (ngModelChange)="selsportsSelEvent($event)" multiple>
+                <mat-select-trigger>
+                  {{selectedSports?.length>0 ? selectedSports[0].opportunity : ''}}
+                  <span *ngIf="selectedSports?.length > 1" class="example-additional-selection">
+                    (+{{selectedSports.length - 1}} {{selectedSports?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let spt of sports" [value]="spt">{{spt["opportunity"]}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="selectedItems-wrapper" *ngIf="selectedSports&&selectedSports.length>0">
+              <div>
+                <div *ngFor="let spt of selectedSports" class="" [ngClass]="{'active': selectedItem == spt.opportunity_id}"
+                  class="selectedItem">
+                  <div class="header-item" *ngIf="(isMobile&&selectedItem !== spt.opportunity_id) || isDesktop" (click)="listClick($event, spt)">
+                    <span class="closeSelSport" (click)="removeCoachActivity($event,spt);">X</span> {{spt.opportunity}}
+
+                  </div>
+                  <div div="coach-activity-item" *ngIf="isMobile&&selectedItem == spt.opportunity_id">
+                      <span class="closeSelSport" (click)="removeCoachActivity($event,spt);">X</span>
+                    <!-- Mobile -->
+                    <form #createOff="ngForm" [formGroup]="createOffering"  *ngIf="servicesCompleated">
+                      <ng-container
+                      *ngTemplateOutlet="activityForm;">
+                      </ng-container>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Desktop -->
+
+      <div class="col-12 col-lg-9" *ngIf="isDesktop">
+        <div class="no-data loadingPlaceholder m-4 d-flex flex-column" *ngIf="!enableActivity">
+          <h4 class="d-block empty-head">Steps to fill:</h4>
+          <ul class="list-inline empty-list">
+            <li>Step 1. Type in or choose the sports that you want from dropdown</li>
+            <li>Step 2. Click on the sport you want, to add details</li>
+          </ul>
+          <img src="../../../assets/art.png"  class="img-responsive empty-img" alt="">
+        </div>
+        <div *ngIf="enableActivity" [ngClass]="{loadingPlaceholder:!servicesCompleated}" class="mat-expansion-panel-spacing">
+          <div *ngIf="!servicesCompleated"> Please wait we are fetching information</div>
+          <div div="coach-activity-item">
+            <form #createOff="ngForm" [formGroup]="createOffering"  *ngIf="servicesCompleated">
+              <div>
+                <ng-container
+                *ngTemplateOutlet="activityForm;">
+             </ng-container>
+
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+   <!-- Desktop end -->
+    </div>
+    <div class="row">
+      <div class="page-button-area clear-fix w-100 p-4">
+        <div class="pull-right">
+            <button class="btn btn-primay-invert d-none" type="button" (click)="removeCoachActivity($event,selectedObj);">SAVE FOR LATER</button>
+            <button class="btn btn-primay ng-star-inserted" type="button" (click)="saveData()">Go ahead</button>
+          </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- Activity Form template -->
+<ng-template #activityForm >
+  <div class="coach-activity-container">
+    <!-- Row -->
+    <div class="row mb-4">
+      <div class="col-12 col-lg-5">
+        <div class="row">
+          <div class="subhead-container col-lg-5 d-none d-md-block">
+            <div class="subhead">
+              Sports
+            </div>
+            <span class="subhead-description">Add sports for this specific group</span>
+          </div>
+          <div class="col-12 col-lg-7">
+            <div class="activity-titile-wrapper d-flex d-md-block w-100 justify-content-between flex-row  justify-content-between">
+              <div class="activity-title main-card-title">
+                {{selectedActivityName}}</div>
+              <div class="d-md-none closetab" (click)="closeCoachActivity($event,selectedObj);">close</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7" >
+        <div class="row">
+          <div class="subhead-container col-lg-3">
+            <div class="subhead">
+              Title
+            </div>
+            <span class="subhead-description">Give a catchy title for your offering</span>
+          </div>
+          <div class="col-lg-9">
+            <input type="text" name="title" [formControl]="createOffering.controls['title']" class="form-control title-input">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- row -->
+    <div class="row createOrg-locationWrapper mb-4">
+
+      <div class="subhead-container col-lg-2">
+        <div class="subhead">
+          Postcode
+        </div>
+        <span class="subhead-description">Add locations for this specific group</span>
+      </div>
+
+      <div class="col-lg-10">
+        <ng-select class="custom" [items]="pincode" [multiple]="true" bindLabel="pincode" bindValue="pincode" [closeOnSelect]="true"
+          appendTo="body" [formControl]="createOffering.controls['pincode']" placeholder="Select pincode" hideSelected="true">
+
+        </ng-select>
+      </div>
+    </div>
+
+    <!-- row -->
+    <div class="row createOrg-rangeWrapper mb-4">
+      <div class="subhead-container col-lg-2">
+        <div class="subhead">
+          Range
+        </div>
+        <span class="subhead-description">Add a range for which you will coach</span>
+      </div>
+      <div class="col-lg-10 d-flex">
+        <nouislider class="nouislider" [formControl]="createOffering.controls['someRange']" [connect]="true" [min]="0" [max]="15"
+          [step]="1" [tooltips]="[ true, true ]" style="margin-top: 0em;" (change)="onChangeRangeSlider($event)"></nouislider>
+        <span class="rangeUnits">KM</span>
+      </div>
+    </div>
+
+    <div class="row no-gutters row-eq-height">
+      <div class="col-xl-8">
+        <!-- row -->
+        <div class="row mb-4 no-gutters">
+          <div class="subhead-container col-lg-4">
+            <div class="subhead">
+              Surface Quality
+            </div>
+            <span class="subhead-description">Add the quality of flooring on which you will coach</span>
+          </div>
+          <div class="col-lg-8">
+            <mat-radio-group [formControl]="createOffering.controls['surfaces']">
+              <!-- <mat-checkbox [checked] ="surface.surface_type_id" (change)="onselectSurfaces($event,surface)" [checked]  [formControl]="createOffering.controls['surfaces']" *ngFor="let surface of floorSurfaces" value="surface.surface_type_id">{{surface.surface_type}}</mat-checkbox> -->
+              <mat-radio-button *ngFor="let surface of floorSurfaces" [value]="surface.surface_quality_id" [checked]="">{{surface.surface_quality}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row mb-4 no-gutters">
+          <div class="subhead-container col-lg-4">
+            <div class="subhead">
+              Age
+            </div>
+            <span class="subhead-description">Aspecify age for this group</span>
+          </div>
+          <div class="col-lg-8 d-flex flex-wrap" >
+            <mat-checkbox  (change)="onselectAgeGroups($event,ageGroup)" *ngFor="let ageGroup of ageGroups" [checked]="isAgeGroupChecked(ageGroup)">{{ageGroup.target_age_group}}</mat-checkbox>
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row mb-4 no-gutters">
+          <div class="subhead-container col-lg-4">
+            <div class="subhead">
+              Type
+            </div>
+            <span class="subhead-description">Add type of trainining for this specific group</span>
+          </div>
+          <div class="col-lg-8">
+
+            <ng-select class="custom" [items]="expertises" [multiple]="true" bindLabel="consumer_expertise" bindValue="consumer_expertise_id"
+              [closeOnSelect]="true" appendTo="body" [formControl]="createOffering.controls['expertise']" placeholder="Select type"
+              hideSelected="true">
+
+            </ng-select>
+          </div>
+        </div>
+
+      </div>
+      <!-- side column -->
+      <div class="col-xl-4 d-flex flex-column justify-content-md-around px-0 px-xl-4">
+        <!-- gender -->
+        <div class="row">
+          <div class="subhead-container col-12 col-lg-4 col-xl-12 align-items-md-center col-12 d-xl-flex flex-xl-column subhead-container">
+            <div class="subhead">Gender</div>
+            <span class="subhead-description">specify gender for this group</span>
+          </div>
+          <div class="d-flex col-12 col-lg-8  col-xl-12 genderWrapper justify-content-md-start justify-content-xl-center">
+            <label *ngFor="let data of gernderArr">
+              <input type="checkbox" (change)="onGenderChange(data.gen, $event.target.checked)" [checked]="selectedGender.includes(data.gen)" name="gender" />
+              <img class="genderIcon na" [src]="data.imgURL">
+              <img class="genderIcon active" [src]="data.imgActURL">
+            </label>
+
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="subhead-container col-12 col-lg-4">
+            <div class="subhead">Cost</div>
+            <span class="subhead-description">Add cost for each session</span>
+          </div>
+          <div class="col-12 col-lg-8">
+            <input type="number" name="cost" [formControl]="createOffering.controls['cost']" class="form-control title-input" placeholder="₹₹">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-area row py-2">
+        <div class="col-12 justify-content-between w-100 d-flex">
+            <div class="">
+                <a href="#close" class="btn-link close-btn" (click)="closeCoachActivity($event,selectedObj)">close</a>
+              </div>
+              <div *ngIf="formSUbmitted&&!createOff.valid">
+                  <span class="error">Plase fill all mandatory fields.</span>
+              </div>
+              <div>
+                <button class="btn btn-primay-invert d-none" type="button" (click)="removeCoachActivity($event,selectedObj);">DELETE</button>
+                <button class="btn btn-primay ng-star-inserted" type="button" (click)="saveAndNext()">NEXT</button>
+              </div>
+        </div>
+
+      </div>
+  </div>
+</ng-template>

@@ -1,0 +1,191 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+// @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,500,800');
+// @import "~ng2-toastr/bundles/ng2-toastr.min.css";
+@import "~angular2-toaster/src/toaster";
+// @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+@import "./styles/Montserrat-100-300-500-800.css";
+@import "./styles/Lato-300-400-700.css";
+@import "./styles/nouislider.min.css";
+@import "./styles/default.theme.unMini.css";
+@import "./styles/koola-style.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "./styles/calender-style.css";
+@import "~styles/variables";
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.cdk-overlay-container{
+  z-index:1200 !important;
+}
+.empty-head{
+      font-family: Montserrat;
+    font-weight: 700;
+    color: #535454;
+}
+.empty-list{
+      color: #707070;
+}
+h1{
+  font-family: Montserrat;
+  font-size: 48px;
+  font-weight: 400;
+}
+.subhead{
+  font-size: 18px;
+  color: #000;
+  font-family: "Helvetica Neue";
+  margin-bottom: 5px;
+}
+.subhead-description {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #848484;
+  display: block;
+  margin-top: 0;
+  font-family: Helvetica Neue;
+
+}
+.btn-primay{
+  background-color: #FFCE00;
+    min-width: 120px;
+    @include border-radius(45px);
+    height: 35px;
+    margin-left: 5px;
+    font-weight: 800;
+    font-size: 12px;
+    border: 0px;
+    cursor: pointer;
+    &:hover{
+      background: #000;
+      color: #FFCE00;
+    }
+}
+.btn-primay-invert{
+  border: 1px solid #95989A;
+  border-radius: 30px;
+  min-width: 120px;
+  border-radius: 45px !important;
+  height: 35px;
+  margin-left: 5px;
+  /* font-weight: 800; */
+  font-size: 12px;
+  font-family: Montserrat;
+  cursor: pointer;
+  &:hover{
+    background: #95989A;
+    color: #fff;
+
+  }
+}
+.btn-link{
+color: #474849;
+font-size: Montserrat;
+font-size: 20px;
+}
+.btn-link.close-btn{
+  font-size: 16px;
+    margin-top: 5px;
+    display: inline-block
+}
+@media(min-width:768px) and (max-width:992px){
+  .subhead-container{
+    margin-bottom: 15px;
+  }
+}
+@media (max-width:768px){
+  .profile-wrapper{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  .navbar-toggler:not(:disabled):not(.disabled){
+    margin-right: 50px;
+  }
+  .subhead-container{
+    display:flex;
+    align-items:baseline;
+
+    .subhead{
+    font-size: 14px !important;
+    padding-right: 4px;
+    display: inline;
+
+    &::after {
+      content:  "|";
+      padding-left:4px;
+    }
+  }
+  .subhead-description{
+    display: inline;
+    font-size: 11px !important;
+    white-space: initial;
+    line-height: 1.4 !important;
+  }
+
+}
+.coach-by-spoart{
+  .mat-form-field{
+    display:block;
+  }
+}
+.coach-activity-container{
+  .mat-checkbox-layout .mat-checkbox-label,.mat-radio-button .mat-radio-label-content{
+    font-size: 11px;
+    font-weight: 400;
+  }
+}
+
+}
+@media (min-width: 1200px){
+  .coach-by-spoart {
+    .mat-form-field{
+      display: block;
+    }
+  }
+.container {
+    max-width: 95%;
+}
+}
+
+.koola-certificatePage{
+  .certificateForm{
+    .mat-form-field{
+      margin-bottom: 10px !important;
+    }
+  }
+ .mat-form-field-label{
+    display: block;
+    font-family: Montserrat;
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    @media (min-width: 1200px){
+      font-size: 14px;
+    }
+  }
+
+  .mat-checkbox .mat-checkbox-frame {
+    border: 0;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 50%;
+  }
+  .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #FFCE00;
+    margin: 5px;
+    border-radius: 50%;
+    svg {
+      display: none;
+    }
+  }
+}
+
+

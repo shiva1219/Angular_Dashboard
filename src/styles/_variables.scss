@@ -1,0 +1,24 @@
+
+$font-family:'Montserrat';
+
+$Montserrat: Montserrat;
+// colors
+$primary: #FFCE00;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius !important;
+     -moz-border-radius: $radius !important;
+      -ms-border-radius: $radius !important;
+          border-radius: $radius !important;
+}
+
+@mixin addPadding($pad) {
+    padding:$pad;
+}
+
+.nopadding{
+  padding: 0px !important;
+}
+.floatRight{
+  float: right;
+}
